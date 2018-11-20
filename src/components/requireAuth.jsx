@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 
 export default ChildComponent => {
@@ -16,6 +17,9 @@ export default ChildComponent => {
   
       shouldNavigateAway() {
         if (!this.props.auth) {
+          this.props.history.push('/');
+        }
+        if (!this.props.userInfo) {
           this.props.history.push('/');
         }
       }
@@ -37,5 +41,5 @@ export default ChildComponent => {
 
     }
   
-    return connect(mapStateToProps)(ComposedComponent);
+    return connect(mapStateToProps, actions)(ComposedComponent);
 };

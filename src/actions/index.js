@@ -46,3 +46,20 @@ export const signout = () => {
     payload: ''
   };
 };
+
+// export const getPlaylist = (formProps, callback) => async dispatch => {
+//   const config = {
+//     headers: {'authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…yOTh9.1cv0Wjq2kc9UGVey0kETxGSq1PWlrFmUpi3Ymb0KNkc"}
+//   }
+//   try {
+//     const response = await axios.get( 
+//       `${apiUrl}/api/playlist/getall`,
+//       '',
+//       config
+//     )
+//     console.log('data back',response.data)
+//     callback();
+//   } catch (e) {
+//     console.log(e)
+//   }
+// };
