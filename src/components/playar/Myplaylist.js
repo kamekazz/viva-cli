@@ -3,10 +3,27 @@ import React from 'react'
 
 
 export default function Myplaylist(props) {
+
+
+  const songs = props.mylist.map(song =>{
+    return (
+      <li key={song._id}>
+        <img src={song.imageUrl} />
+        <p>{song.title}</p>
+        <button>+</button>
+        <button>-</button>
+        <hr></hr>
+      </li>
+    )
+  })
+  
   return (
     <div>
-      Myplaylisy
-      {props.mylist}
+      <h3>my song</h3>
+      <ul>
+        {songs}
+      </ul>
+      
     </div>
   )
 }

@@ -58,8 +58,9 @@ const API_URL = confing.apiUrl
         body,
         yourConfig
       )
-      this.getMyList()
       console.log('data back',response.data.message)
+      this.getMyList()
+ 
     } catch (e) {
       console.log(e)
     }
@@ -76,12 +77,13 @@ const API_URL = confing.apiUrl
         `http://127.0.0.1:3090/api/playlist/songs/${this.props.match.params.id}`,
         yourConfig
       )
-      console.log('message: ',response.data.message)
-      console.log('data back',response.data.data)
+      this.setState({songInlist: response.data.data})
+
     } catch (e) {
       console.log(e)
     }
   }
+
 
 
 
@@ -93,20 +95,17 @@ const API_URL = confing.apiUrl
       <div className="App">
             <SearchBar onSearchTermChange={videoSearch}/>
       <div className="row">
-        <div className="now-playing">
-          <VideoDetail video={this.state.selectedVideo}/>
-          <Myplaylist mylist={this.state.songInlist} />
-        </div>
-        <VideoList 
+        <div className="now-playing cl-md-3">
+          <VideoDetail video={this.state.songInlist[0]}/>
+
+          <VideoList 
             addvideoToMyList={this.addvideoToMyList}
             videos={this.state.videos}>
-        </VideoList>
-      </div>
-  
+          </VideoList>
+        </div>
+          <Myplaylist mylist={this.state.songInlist} />
 
-        
-
-        
+        </div>
       </div>
     );
   }
