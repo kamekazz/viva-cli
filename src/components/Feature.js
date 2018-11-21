@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import confing from '../confing'
 
 import PlaylistOrder from './PlaylistOrder';
 
@@ -8,10 +9,7 @@ import PlaylistOrder from './PlaylistOrder';
 
 
 
-const apiUrl = 'http://localhost:3090'
-
-
-
+const apiUrl = confing.apiUrl
 
 class Feature extends Component {
 

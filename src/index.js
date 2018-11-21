@@ -32,7 +32,7 @@ const store = createStore(
                 <Route path="/feature" component={Feature} />
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
-                <Route path="/playlist/:id" component={PlayListPlayar} />
+                <Route path="/playlist/:id/:name" component={PlayListPlayar} />
             </App>
         </BrowserRouter>
     </Provider>
