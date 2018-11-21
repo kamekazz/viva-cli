@@ -6,12 +6,14 @@ import './HeaderStyle.css';
 
 
 class Header extends Component {
-  renderLinks() {
+
+  renderLinks =() =>{
     if (this.props.authenticated) {
       return (
         <div>
           <Link to="/signout">Sign Out</Link>
           <Link to="/feature">Feature</Link>
+          <p>{this.props.userInfo}</p>
         </div>
       );
     } else {
@@ -33,7 +35,6 @@ class Header extends Component {
     return (
       <div className="header">
         <Link to="/">Redux Auth</Link>
-        {/* <h1>ok {this.props.userInfo.userName} </h1> */}
         {this.renderLinks()}
       </div>
     );

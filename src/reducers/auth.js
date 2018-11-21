@@ -3,7 +3,7 @@ import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO } from '../actions/types'
 const INITIAL_STATE = {
   authenticated: '',
   errorMessage: '',
-  userInfo:{}
+  userInfo:''
 };
 
 export default function(state = INITIAL_STATE, action) {

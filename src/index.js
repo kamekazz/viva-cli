@@ -12,6 +12,7 @@ import Signup from './components/auth/Signup';
 import Signout from './components/auth/Signout';
 import Signin from './components/auth/Signin';
 import Feature from './components/Feature';
+import PlayListPlayar from './components/playar/PlayListPlayar';
 
 
 const store = createStore(
@@ -31,6 +32,7 @@ const store = createStore(
                 <Route path="/feature" component={Feature} />
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
+                <Route path="/playlist/:id" component={PlayListPlayar} />
             </App>
         </BrowserRouter>
     </Provider>
