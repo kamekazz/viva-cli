@@ -18,7 +18,7 @@ const API_URL = confing.apiUrl
     playListId:'',
     songInlist:[],
     videos:[],
-    selectedVideo: []
+    selectedVideo: null
   }
 
 
@@ -30,7 +30,7 @@ const API_URL = confing.apiUrl
   }
 
   videoSearch(term){
-    YTSearch({key: API_KEY, term: term },  (videos) => {
+    YTSearch({key: API_KEY, term: term},  (videos) => {
       this.setState({
         videos: videos
       })
@@ -109,32 +109,71 @@ const API_URL = confing.apiUrl
     }
   }
 
+  voteUp = async (ev)=> {
+    let yourConfig = {
+      headers: {
+        Authorization:  localStorage.getItem('token')
+      }
+    }
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:3090/api/song/voteup/${ev}`,
+        yourConfig
+      )
+      console.log(response.data.message)
+      this.getMyList()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  voteDon = async (ev)=> {
+    let yourConfig = {
+      headers: {
+        Authorization:  localStorage.getItem('token')
+      }
+    }
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:3090/api/song/voted/${ev}`,
+        yourConfig
+      )
+      console.log(response.data.message)
+      this.getMyList()
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
 
 
 
   
   render() {
-   
+
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 700)
     return (
       <div className="App">
-            <SearchBar onSearchTermChange={videoSearch}/>
-            <button onClick={this.startPlay}>Play</button>
+        <SearchBar onSearchTermChange={videoSearch}/>
+      <button onClick={this.startPlay}>Play</button>
       <div className="row">
         <div className="now-playing cl-md-3">
+        {this.state.selectedVideo && 
           <VideoDetail 
             video={this.state.selectedVideo[0]}
             neaxetSong={this.startPlay}
           />
-
+        }
           <VideoList 
             addvideoToMyList={this.addvideoToMyList}
             videos={this.state.videos}>
           </VideoList>
         </div>
-          <Myplaylist mylist={this.state.songInlist} />
-
+          <Myplaylist
+           mylist={this.state.songInlist}
+           voteUp={this.voteUp}
+           voteDon={this.voteDon}
+          />
         </div>
       </div>
     );

@@ -9,9 +9,10 @@ export default function Myplaylist(props) {
     return (
       <li key={song._id}>
         <img src={song.imageUrl} />
-        <p>{song.title}</p>
-        <button>+</button>
-        <button>-</button>
+        <p>title: {song.title}</p>
+        <h3>vote: {song.vote}</h3>
+        <button  onClick={()=> props.voteUp(song._id)}>+</button>
+        <button  onClick={()=> props.voteDon(song._id)}>-</button>
         <hr></hr>
       </li>
     )

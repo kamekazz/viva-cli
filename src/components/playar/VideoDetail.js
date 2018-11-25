@@ -1,34 +1,41 @@
-import React from 'react'
 
-function VideoDetail({video}) {
+import React, { Component } from 'react'
+import YouTube from 'react-youtube';
 
-   
-    if (!video) {
-        return <div>Loading...</div>;
-    }
+export default class VideoDetail extends Component {
 
-    const videoId = video.videoId;
-    const url = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    // https://www.googleapis.com/youtube/v3/videos?id=9bZkp7q19f0&part=contentDetails&key={YOUR_API_KEY} 
+  
 
 
+  render() {
     
-    
+    const opts = {
+      height: '0',
+      width: '0',
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1,
+        controls:0,
+        showinfo:0
+      }
+    };
+
+
+    const videoId = this.props.video.videoId;
+
 
     return (
-        <div className="video-detail col-md-8">
-          <div className="embed-responsive embed-responsive-16by9">
-            <iframe className="embed-responsive-item" src={url} />
-          </div>
-          <div className="details">
-            <div>{video.title}</div>
-            <div>{video.description}</div>
-          </div>
-        </div>
-    );
+      <div>
+      <YouTube
+        videoId={videoId}
+        opts={opts}
+        onReady={this._onReady}
+        onEnd={this.props.neaxetSong} 
+      />
+      </div>
+    )
+  }
 
-    
+
+
 }
-
-export default  VideoDetail
 
