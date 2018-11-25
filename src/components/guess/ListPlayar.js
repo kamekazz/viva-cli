@@ -3,18 +3,17 @@ import confing from '../../confing'
 import YTSearch from 'youtube-api-search'
 import _ from 'lodash'
 import SearchBar from '../playar/SearchBar';
-import VideoDetail from '../playar/VideoDetail'
-import VideoList from './VideoList'
-import Myplaylist from './Myplaylist'
+import VideoList from '../playar/VideoList'
+import Myplaylist from '../playar/Myplaylist'
 import axios from 'axios';
-import requireAuth from '../requireAuth';
+import requireAuth from './requireAuth';
 
 const API_KEY = confing.API_KEY
 const API_URL = confing.apiUrl
 
 
 
- class PlayListPlayar extends Component {
+ class ListPlayar extends Component {
   state={
     playListId:'',
     songInlist:[],
@@ -26,7 +25,7 @@ const API_URL = confing.apiUrl
 
   componentDidMount(){
     this.setState({playListId:this.props.match.params.id})
-
+ 
     this.getMyList()
   }
 
@@ -155,17 +154,10 @@ const API_URL = confing.apiUrl
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 700)
     return (
       <div className="App">
-        <p>http://localhost:3000/xxxxxx/signin/{this.props.match.params.id}</p>
         <SearchBar onSearchTermChange={videoSearch}/>
       <button onClick={this.startPlay}>Play</button>
       <div className="row">
         <div className="now-playing cl-md-3">
-        {this.state.selectedVideo && 
-          <VideoDetail 
-            video={this.state.selectedVideo[0]}
-            neaxetSong={this.startPlay}
-          />
-        }
           <VideoList 
             addvideoToMyList={this.addvideoToMyList}
             videos={this.state.videos}>
@@ -185,4 +177,4 @@ const API_URL = confing.apiUrl
 }
 
 
-export default requireAuth(PlayListPlayar);
+export default requireAuth(ListPlayar)

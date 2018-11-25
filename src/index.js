@@ -15,6 +15,9 @@ import Signin from './components/auth/Signin';
 import Feature from './components/Feature';
 import PlayListPlayar from './components/playar/PlayListPlayar';
 
+import ListPlayar from './components/guess/ListPlayar';
+import Signup2 from './components/guess/Signup2';
+
 
 const store = createStore(
     reducers,
@@ -34,6 +37,8 @@ const store = createStore(
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/playlist/:id/:name" component={PlayListPlayar} />
+                <Route path="/xxxxxx/signin/:id"  component={Signup2} />
+                <Route path="/guess/:id" component={ListPlayar} />
             </App>
         </BrowserRouter>
     </Provider>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import confing from '../confing'
 
 import PlaylistOrder from './PlaylistOrder';
-
+import requireAuth from './requireAuth';
 
 
 
@@ -101,4 +101,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(Feature);
+export default requireAuth(Feature);
