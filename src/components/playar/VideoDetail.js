@@ -31,3 +31,4 @@ function VideoDetail({video}) {
 }
 
 export default  VideoDetail
+
