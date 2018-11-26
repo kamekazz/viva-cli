@@ -75,7 +75,7 @@ const API_URL = confing.apiUrl
     }
     try {
       const response = await axios.get(
-        `http://127.0.0.1:3090/api/playlist/songs/${this.props.match.params.id}`,
+        `${API_URL}/api/playlist/songs/${this.props.match.params.id}`,
         yourConfig
       )
       this.setState({songInlist: response.data.data})
@@ -97,7 +97,7 @@ const API_URL = confing.apiUrl
     }
     try {
       const response = await axios.get(
-        `http://127.0.0.1:3090/api/song/voteup/${ev}`,
+        `${API_URL}/api/song/voteup/${ev}`,
         yourConfig
       )
       console.log(response.data.message)
@@ -115,7 +115,7 @@ const API_URL = confing.apiUrl
     }
     try {
       const response = await axios.get(
-        `http://127.0.0.1:3090/api/song/voted/${ev}`,
+        `${API_URL}/api/song/voted/${ev}`,
         yourConfig
       )
       console.log(response.data.message)
@@ -156,4 +156,4 @@ const API_URL = confing.apiUrl
 }
 
 
-export default requireAuth(ListPlayar)
+export default ListPlayar

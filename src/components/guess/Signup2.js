@@ -7,9 +7,9 @@ const API_URL = confing.apiUrl
 class Signup2 extends Component {
 
     onSubmit = () => {
-            this.props.history.push(`/guess/${this.props.match.params.id}`);
+            this.props.history.push(`/guess/${this.props.match.params.id}`)
             console.log('singup done')
-    };
+    }
 
     componentDidMount(){
         this.singInguess()
@@ -20,7 +20,7 @@ class Signup2 extends Component {
         try {
           const response = await axios.get(
             `${API_URL}/api/accounts/new/guste`)
-            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('token', response.data.token)
         } catch (e) {
           console.log(e)
         }
