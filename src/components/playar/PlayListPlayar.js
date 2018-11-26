@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import confing from '../../confing'
-import YTSearch from 'youtube-api-search'
+
 import _ from 'lodash'
 import SearchBar from '../playar/SearchBar';
 import VideoDetail from '../playar/VideoDetail'
@@ -30,14 +30,28 @@ const API_URL = confing.apiUrl
     this.getMyList()
   }
 
-  videoSearch(term){
-    YTSearch({key: API_KEY, term: term},  (videos) => {
-      this.setState({
-        videos: videos
-      })
+  videoSearch=(term)=>{
+    let ROOT_URL = 'https://www.googleapis.com/youtube/v3/search';
+    let params = {
+      part: 'snippet',
+      key: API_KEY,
+      q: term,
+      type: 'video',
+      videoCategoryId:10,
+      maxResults:12
+    };
+    axios.get(ROOT_URL, { params: params })
+    .then((response) => {
+      
+        this.setState({
+          videos: response.data.items
+        })
+      
     })
+    .catch((error) => {
+      console.error(error)
+    });
   }
-
   trigger() {
     setInterval(() => { 
       this.getMyList()
