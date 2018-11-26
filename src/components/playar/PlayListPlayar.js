@@ -155,7 +155,7 @@ const API_URL = confing.apiUrl
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 700)
     return (
       <div className="App">
-        <p>http://localhost:3000/xxxxxxx/start/{this.props.match.params.id}</p>
+        <p>https://client-viva.herokuapp.com/xxxxxxx/start/{this.props.match.params.id}</p>
         <SearchBar onSearchTermChange={videoSearch}/>
       <button onClick={this.startPlay}>Play</button>
       <div className="row">
