@@ -6,7 +6,7 @@ import SearchBar from '../playar/SearchBar';
 import VideoList from '../playar/VideoList'
 import Myplaylist from '../playar/Myplaylist'
 import axios from 'axios';
-import requireAuth from './requireAuth';
+
 
 const API_KEY = confing.API_KEY
 const API_URL = confing.apiUrl
@@ -25,8 +25,14 @@ const API_URL = confing.apiUrl
 
   componentDidMount(){
     this.setState({playListId:this.props.match.params.id})
- 
+    this.timerfiveSc()
     this.getMyList()
+  }
+
+  timerfiveSc() {
+    setInterval(() => { 
+      this.getMyList()
+    }, 5000);
   }
 
 

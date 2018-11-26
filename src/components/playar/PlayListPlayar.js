@@ -26,7 +26,7 @@ const API_URL = confing.apiUrl
 
   componentDidMount(){
     this.setState({playListId:this.props.match.params.id})
-
+    this.trigger()
     this.getMyList()
   }
 
@@ -37,6 +37,14 @@ const API_URL = confing.apiUrl
       })
     })
   }
+
+  trigger() {
+    setInterval(() => { 
+      this.getMyList()
+    }, 5000);
+  }
+
+
   
 
   addvideoToMyList = async (v)=> {
