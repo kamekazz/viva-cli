@@ -17,6 +17,7 @@ import PlayListPlayar from './components/playar/PlayListPlayar';
 
 import ListPlayar from './components/guess/ListPlayar';
 import Signup2 from './components/guess/Signup2';
+import Start from './components/guess/Start';
 
 
 const store = createStore(
@@ -37,6 +38,8 @@ const store = createStore(
                 <Route path="/signout" component={Signout} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/playlist/:id/:name" component={PlayListPlayar} />
+
+                <Route path="/xxxxxxx/start/:id"  component={Start} />
                 <Route path="/xxxxxx/signin/:id"  component={Signup2} />
                 <Route path="/guess/:id" component={ListPlayar} />
             </App>

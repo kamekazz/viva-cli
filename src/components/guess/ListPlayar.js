@@ -29,6 +29,8 @@ const API_URL = confing.apiUrl
     this.getMyList()
   }
 
+
+
   videoSearch(term){
     YTSearch({key: API_KEY, term: term},  (videos) => {
       this.setState({
@@ -83,31 +85,9 @@ const API_URL = confing.apiUrl
     }
   }
 
-  startPlay = () =>{
-    this.setState({
-      selectedVideo: this.state.songInlist
-    })
-    this.removeSong()
-  }
 
-  removeSong = async ()=> {
-    const testRemove = this.state.songInlist[0]
-    let yourConfig = {
-      headers: {
-        Authorization:  localStorage.getItem('token')
-      }
-    }
-    try {
-      const response = await axios.delete(
-        `http://127.0.0.1:3090/api/song/delete/${testRemove._id}`,
-        yourConfig
-      )
-      console.log(response)
-      this.getMyList()
-    } catch (e) {
-      console.log(e)
-    }
-  }
+
+
 
   voteUp = async (ev)=> {
     let yourConfig = {
@@ -155,13 +135,12 @@ const API_URL = confing.apiUrl
     return (
       <div className="App">
         <SearchBar onSearchTermChange={videoSearch}/>
-      <button onClick={this.startPlay}>Play</button>
       <div className="row">
         <div className="now-playing cl-md-3">
           <VideoList 
             addvideoToMyList={this.addvideoToMyList}
-            videos={this.state.videos}>
-          </VideoList>
+            videos={this.state.videos}
+          />
         </div>
           <Myplaylist
            mylist={this.state.songInlist}

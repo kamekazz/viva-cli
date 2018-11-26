@@ -1,71 +1,46 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import confing from '../../confing'
+import axios from 'axios'
+
+
+const API_KEY = confing.API_KEY
+const API_URL = confing.apiUrl
 
 class Signup2 extends Component {
 
-    onSubmit = formProps => {
-        this.props.signup(formProps, () => {
+    onSubmit = () => {
+      
             this.props.history.push(`/guess/${this.props.match.params.id}`);
             console.log('singup done')
-        });
+      
     };
 
     componentDidMount(){
-        
+        this.singInguess()
     }
 
 
-    makeid = () => {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      
-        for (var i = 0; i < 5; i++)
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
-        return text;
+    singInguess = async ()=> {
+        try {
+          const response = await axios.get(
+            `${API_URL}/api/accounts/new/guste`)
+            localStorage.setItem('token', response.data.token);
+        } catch (e) {
+          console.log(e)
+        }
     }
-      
+
+
 
   render() {
-    const { handleSubmit } = this.props;
+  
 
     return (
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-            <fieldset>
-            <label>Email</label>
-            <Field
-                name="userName"
-                type="text"
-                component="input"
-                autoComplete="none"
-                value="hhhhh"
-            />
-            </fieldset>
-            <fieldset>
-            <label>Password</label>
-            <Field
-                name="password"
-                type="password"
-                component="input"
-                autoComplete="none"
-                value='123'
-            />
-            </fieldset>
-            <div>{this.props.errorMessage}</div>
-            <button>Sign Up!</button>
-        </form>
+        <button onClick={this.onSubmit}>Start</button>
     );
   }
 }
 
-function mapStateToProps(state) {
-    return { errorMessage: state.auth.errorMessage };
-}
 
 
-export default compose(
-    connect(mapStateToProps, actions),
-    reduxForm({ form: 'signup' })
-)(Signup2);
+export default Signup2

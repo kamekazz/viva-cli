@@ -74,7 +74,7 @@ const API_URL = confing.apiUrl
     }
     try {
       const response = await axios.get(
-        `http://127.0.0.1:3090/api/playlist/songs/${this.props.match.params.id}`,
+        `${API_URL}/api/playlist/songs/${this.props.match.params.id}`,
         yourConfig
       )
       this.setState({songInlist: response.data.data})
@@ -100,7 +100,7 @@ const API_URL = confing.apiUrl
     }
     try {
       const response = await axios.delete(
-        `http://127.0.0.1:3090/api/song/delete/${testRemove._id}`,
+        `${API_URL}/api/song/delete/${testRemove._id}`,
         yourConfig
       )
       console.log(response)
@@ -118,7 +118,7 @@ const API_URL = confing.apiUrl
     }
     try {
       const response = await axios.get(
-        `http://127.0.0.1:3090/api/song/voteup/${ev}`,
+        `${API_URL}/api/song/voteup/${ev}`,
         yourConfig
       )
       console.log(response.data.message)
@@ -136,7 +136,7 @@ const API_URL = confing.apiUrl
     }
     try {
       const response = await axios.get(
-        `http://127.0.0.1:3090/api/song/voted/${ev}`,
+        `${API_URL}/api/song/voted/${ev}`,
         yourConfig
       )
       console.log(response.data.message)
@@ -155,7 +155,7 @@ const API_URL = confing.apiUrl
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 700)
     return (
       <div className="App">
-        <p>http://localhost:3000/xxxxxx/signin/{this.props.match.params.id}</p>
+        <p>http://localhost:3000/xxxxxxx/start/{this.props.match.params.id}</p>
         <SearchBar onSearchTermChange={videoSearch}/>
       <button onClick={this.startPlay}>Play</button>
       <div className="row">
