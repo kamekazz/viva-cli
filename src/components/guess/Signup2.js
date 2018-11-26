@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import confing from '../../confing'
 import axios from 'axios'
 
-
-const API_KEY = confing.API_KEY
 const API_URL = confing.apiUrl
 
 class Signup2 extends Component {
 
     onSubmit = () => {
-      
             this.props.history.push(`/guess/${this.props.match.params.id}`);
             console.log('singup done')
-      
     };
 
     componentDidMount(){

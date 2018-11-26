@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
 import confing from '../confing'
-
 import PlaylistOrder from './PlaylistOrder';
 import requireAuth from './requireAuth';
-
-
-
 
 const apiUrl = confing.apiUrl
 
@@ -84,20 +79,6 @@ class Feature extends Component {
     )
    
   }
-}
-
-
-
-
-function mapStateToProps(state) {
-  return(
-     {
-        auth: state.auth.authenticated,
-        userInfo: state.auth.userInfo,
-        errorMessage: state.auth.errorMessage 
-     }
-  )
-
 }
 
 
