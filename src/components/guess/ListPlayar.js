@@ -161,20 +161,17 @@ const API_URL = confing.apiUrl
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 700)
     return (
       <div className="App">
+        <h1>Visita....</h1>
         <SearchBar onSearchTermChange={videoSearch}/>
-      <div className="row">
-        <div className="now-playing cl-md-3">
           <VideoList 
             addvideoToMyList={this.addvideoToMyList}
             videos={this.state.videos}
           />
-        </div>
           <Myplaylist
            mylist={this.state.songInlist}
            voteUp={this.voteUp}
            voteDon={this.voteDon}
           />
-        </div>
       </div>
     );
   }

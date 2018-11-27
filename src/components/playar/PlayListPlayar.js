@@ -42,11 +42,9 @@ const API_URL = confing.apiUrl
     };
     axios.get(ROOT_URL, { params: params })
     .then((response) => {
-      
         this.setState({
           videos: response.data.items
         })
-      
     })
     .catch((error) => {
       console.error(error)
@@ -125,7 +123,7 @@ const API_URL = confing.apiUrl
         `${API_URL}/api/song/delete/${testRemove._id}`,
         yourConfig
       )
-      console.log(response)
+      console.log(response.data)
       this.getMyList()
     } catch (e) {
       console.log(e)
