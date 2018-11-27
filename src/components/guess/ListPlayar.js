@@ -10,7 +10,9 @@ import axios from 'axios';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PropTypes from 'prop-types';
+import PhoneIcon from '@material-ui/icons/Search';
+import FavoriteIcon from '@material-ui/icons/PlayArrow';
+import PersonPinIcon from '@material-ui/icons/Settings';
 
 
 const API_KEY = confing.API_KEY
@@ -51,7 +53,7 @@ const API_URL = confing.apiUrl
       q: term,
       type: 'video',
       videoCategoryId:10,
-      maxResults:12
+      maxResults:6
     };
     axios.get(ROOT_URL, { params: params })
     .then((response) => {
@@ -187,15 +189,15 @@ const API_URL = confing.apiUrl
 
 
 
-    const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 700)
+    const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 1000)
     return (
    
         <div style={styles.root}>
         <AppBar position="static">
-          <Tabs value={value}  onChange={this.handleChange} >
-            <Tab label="ADD SONG" />
-            <Tab label="ACTICE PLAYLIST" />
-            <Tab label="OPTIONS" />
+          <Tabs value={value}  onChange={this.handleChange} fullWidth >
+          <Tab icon={<PhoneIcon />} />
+          <Tab icon={<FavoriteIcon />} />
+          <Tab icon={<PersonPinIcon />} />
           </Tabs>
         </AppBar>
         {value === 0 && seaerchComponetn()    }

@@ -44,15 +44,14 @@ state={
     if (this.props.authenticated) {
       return (
         <div>
-           <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signout"><Button color="inherit">Sign Out</Button></Link>
-           <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/feature"><Button  color="inherit">PLAYLISTS</Button></Link>
+           <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signout"><Button variant="contained" color="secondary">Sign Out</Button></Link>
         </div>
       );
     } else {
       return (
         <div>
-          <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signup"><Button  color="inherit">Sign Up</Button></Link>
-          <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signin"><Button  color="inherit">Sign In</Button></Link>
+          <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signup"><Button variant="contained" color="secondary">Sign Up</Button></Link>
+          <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signin"><Button variant="contained" color="secondary">Sign In</Button></Link>
         </div>
       );
     }
