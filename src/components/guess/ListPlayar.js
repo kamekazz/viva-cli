@@ -7,10 +7,14 @@ import VideoList from '../playar/VideoList'
 import Myplaylist from '../playar/Myplaylist'
 import axios from 'axios';
 
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import PropTypes from 'prop-types';
+
 
 const API_KEY = confing.API_KEY
 const API_URL = confing.apiUrl
-
 
 
  class ListPlayar extends Component {
@@ -18,6 +22,7 @@ const API_URL = confing.apiUrl
     playListId:'',
     songInlist:[],
     videos:[],
+    value: 2,
     selectedVideo: null
   }
 
@@ -155,24 +160,49 @@ const API_URL = confing.apiUrl
 
 
 
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
   
   render() {
+    const { value } = this.state;
+
+    const styles ={
+      root: {
+        flexGrow: 1,
+        // backgroundColor: theme.palette.background.paper,
+      },
+    }
+
+    const seaerchComponetn =() =>{
+      return(
+        <div>
+          <SearchBar onSearchTermChange={videoSearch}/>
+          <VideoList  addvideoToMyList={this.addvideoToMyList} videos={this.state.videos}/>
+        </div>
+      )
+    }
+
+
 
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 700)
     return (
-      <div className="App">
-        <h1>Visita....</h1>
-        <SearchBar onSearchTermChange={videoSearch}/>
-          <VideoList 
-            addvideoToMyList={this.addvideoToMyList}
-            videos={this.state.videos}
-          />
-          <Myplaylist
-           mylist={this.state.songInlist}
-           voteUp={this.voteUp}
-           voteDon={this.voteDon}
-          />
+   
+        <div style={styles.root}>
+        <AppBar position="static">
+          <Tabs value={value}  onChange={this.handleChange} >
+            <Tab label="ADD SONG" />
+            <Tab label="ACTICE PLAYLIST" />
+            <Tab label="OPTIONS" />
+          </Tabs>
+        </AppBar>
+        {value === 0 && seaerchComponetn()    }
+        {value === 1 &&  <Myplaylist mylist={this.state.songInlist} voteUp={this.voteUp} voteDon={this.voteDon} />   }
+        {value === 2 &&    <h1>ok 3</h1>  }
       </div>
+        
     );
   }
 

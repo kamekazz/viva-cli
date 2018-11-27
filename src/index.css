@@ -24,7 +24,6 @@ button{
 
 
 html, body {
-    overflow: hidden;
     margin: 0;
     height: 100%;
     box-sizing: border-box;
