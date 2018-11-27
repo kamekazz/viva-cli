@@ -9,6 +9,16 @@ import Myplaylist from './Myplaylist'
 import axios from 'axios';
 import requireAuth from '../requireAuth';
 
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import PhoneIcon from '@material-ui/icons/Search';
+import FavoriteIcon from '@material-ui/icons/PlayArrow';
+import PersonPinIcon from '@material-ui/icons/Settings';
+
+import Button from '@material-ui/core/Button';
+
+
 const API_KEY = confing.API_KEY
 const API_URL = confing.apiUrl
 
@@ -19,6 +29,7 @@ const API_URL = confing.apiUrl
     playListId:'',
     songInlist:[],
     videos:[],
+    value: 1,
     selectedVideo: null
   }
 
@@ -167,36 +178,63 @@ const API_URL = confing.apiUrl
   }
 
 
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
 
 
   
   render() {
 
-    const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 700)
+    const { value } = this.state;
+
+    const styles ={
+      root: {
+        flexGrow: 1,
+        // backgroundColor: theme.palette.background.paper,
+      }
+    }
+
+    const seaerchComponetn =() =>{
+      return(
+        <div>
+          <SearchBar onSearchTermChange={videoSearch}/>
+          <VideoList  addvideoToMyList={this.addvideoToMyList} videos={this.state.videos}/>
+        </div>
+      )
+    }
+
+    const playComponetn =() =>{
+      return(
+        <div>
+          <Button onClick={this.startPlay} variant="outlined" color="secondary" >
+                  PLAY
+          </Button>
+          <Myplaylist mylist={this.state.songInlist} voteUp={this.voteUp} voteDon={this.voteDon} />
+        </div>
+      )
+    }
+
+    const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 1000)
     return (
-      <div className="App">
-        <p>https://client-viva.herokuapp.com/xxxxxxx/start/{this.props.match.params.id}</p>
-        <SearchBar onSearchTermChange={videoSearch}/>
-      <button onClick={this.startPlay}>Play</button>
-      <div className="row">
-        <div className="now-playing cl-md-3">
+      <div style={styles.root}>
+   
+      <AppBar position="static">
+        <Tabs value={value}  onChange={this.handleChange} fullWidth >
+          <Tab icon={<PhoneIcon />} />
+          <Tab icon={<FavoriteIcon />} />
+          <Tab icon={<PersonPinIcon />} />
+        </Tabs>
+      </AppBar>
+      {value === 0 && seaerchComponetn() }
+      {value === 1 &&  playComponetn()   }
+      {value === 2 &&   <p>https://client-viva.herokuapp.com/xxxxxxx/start/{this.props.match.params.id}</p>  }
         {this.state.selectedVideo && 
           <VideoDetail 
             video={this.state.selectedVideo[0]}
             neaxetSong={this.startPlay}
           />
         }
-          <VideoList 
-            addvideoToMyList={this.addvideoToMyList}
-            videos={this.state.videos}>
-          </VideoList>
-        </div>
-          <Myplaylist
-           mylist={this.state.songInlist}
-           voteUp={this.voteUp}
-           voteDon={this.voteDon}
-          />
-        </div>
       </div>
     );
   }
