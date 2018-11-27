@@ -29,8 +29,8 @@ const store = createStore(
 
 const theme = createMuiTheme({
     palette: {
-      primary: { main: '#E54B4B' }, 
-      secondary: { main: '#FFA987' }, 
+      primary: { main: '#000000' }, 
+      secondary: { main: '#E54B4B' }, 
       option: { main: '#FDFFFC' },
       error: { main: '#ff0000' },  
     },
