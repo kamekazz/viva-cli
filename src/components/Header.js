@@ -9,8 +9,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-
+// import MenuIcon from '@material-ui/icons/Menu';
+import logo from '../components/css/record-33583.svg'
 
 
 
@@ -22,7 +22,20 @@ import MenuIcon from '@material-ui/icons/Menu';
 class Header extends Component {
 
 
+state={
+  logoRT:false,
+  classStriang:'logo2'
+}
 
+
+
+  discRunNow = () => {
+    this.setState({logoRT: !this.state.logoRT})      
+  }
+
+  componentDidUpdate(){
+
+  }
 
 
 
@@ -48,7 +61,10 @@ class Header extends Component {
 
 
 
+
   render() {
+
+
 
     const styles = {
       root: {
@@ -63,6 +79,18 @@ class Header extends Component {
       },
     };
 
+    const disctester = () =>{
+      if (this.state.logoRT) {
+         return (
+        <img  onClick={this.discRunNow} alt="logo" className="logo" src={logo}/>
+      )
+      } else {
+        return (
+          <img  onClick={this.discRunNow} alt="logo" className="logo2" src={logo}/>
+        )
+      }
+
+    }
 
     
     return (
@@ -70,10 +98,10 @@ class Header extends Component {
       <AppBar position="static">
         <Toolbar>
           <IconButton style={styles.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
+            {disctester()}
           </IconButton>
           <Typography variant="h6" style={styles.grow} color="inherit" >
-            Dj
+           
           </Typography>
           {this.renderLinks()}
         </Toolbar>

@@ -32,4 +32,56 @@ html, body {
     text-decoration: none;
 }
 
+.logo{
+    margin: 0;
+    width:40px;
+    height:40px;
+    border:2px solid #E54B4B;
+    border-top:2px solid #FDFFFC;
+    border-radius:50%;
+   
+    /*Added Code from here down*/
+    
+    /*Animation code for older Chrome, Safari, Opera*/
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1.2s;
+    -webkit-animation-name: rotate;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    
+    /*Animation code for older Firefox*/
+    -moz-transition-property: -moz-transform;
+    -moz-animation-name: rotate; 
+    -moz-animation-duration: 1.2s; 
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    
+    /*Default animation code*/
+    transition-property: transform;
+    animation-name: rotate; /*Call to @keyframe rule*/
+    animation-duration: 1.2s; /*Change to speed up or slow down the animation*/
+    animation-iteration-count: infinite; /*Make the animation go forever*/
+    animation-timing-function: linear;
+}
+   
+  /*keyframes rule for older Chrome, Safari, Opera*/
+  @-webkit-keyframes rotate {
+      from {-webkit-transform: rotate(0deg);}
+      to {-webkit-transform: rotate(360deg);}
+  }
+   
+
+  .logo2{
+    margin: 0;
+    width:40px;
+    height:40px;
+    border:2px solid #E54B4B;
+    border-top:2px solid #FDFFFC;
+    border-radius:50%;
+   
+    }
+   
+
+
+
 
