@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 // import './HeaderStyle.css';
 import compose from 'recompose/compose';
 
-import PropTypes from 'prop-types';
-
-import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -28,20 +25,21 @@ class Header extends Component {
 
 
 
+
+
   renderLinks =() =>{
     if (this.props.authenticated) {
       return (
         <div>
-          <Link to="/signout">Sign Out</Link>
-          <Link to="/feature">Feature</Link>
-          <p>{this.props.userInfo}</p>
+           <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signout"><Button color="inherit">Sign Out</Button></Link>
+           <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/feature"><Button  color="inherit">PLAYLISTS</Button></Link>
         </div>
       );
     } else {
       return (
         <div>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/signin">Sign In</Link>
+          <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signup"><Button  color="inherit">Sign Up</Button></Link>
+          <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signin"><Button  color="inherit">Sign In</Button></Link>
         </div>
       );
     }
@@ -52,28 +50,34 @@ class Header extends Component {
 
   render() {
 
-
+    const styles = {
+      root: {
+        flexGrow: 1,
+      },
+      grow: {
+        flexGrow: 1,
+      },
+      menuButton: {
+        marginLeft: -12,
+        marginRight: 20,
+      },
+    };
 
 
     
     return (
-      <div className="header">
-        <Link to="/">Redux Auth</Link>
-        {this.renderLinks()}
-
-        <div >
+      <div style={styles.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton  color="inherit" aria-label="Menu">
+          <IconButton style={styles.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" >
-            News
+          <Typography variant="h6" style={styles.grow} color="inherit" >
+            Dj
           </Typography>
-          <Button color="inherit">Login</Button>
+          {this.renderLinks()}
         </Toolbar>
       </AppBar>
-    </div>
       </div>
     );
   }
@@ -102,3 +106,6 @@ export default compose(
   // withStyles(styles),
   connect(mapStateToProps, null)
 )(Header);
+
+
+
