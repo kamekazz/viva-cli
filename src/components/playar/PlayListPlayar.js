@@ -49,7 +49,7 @@ const API_URL = confing.apiUrl
       q: term,
       type: 'video',
       videoCategoryId:10,
-      maxResults:12
+      maxResults:7
     };
     axios.get(ROOT_URL, { params: params })
     .then((response) => {
@@ -207,8 +207,9 @@ const API_URL = confing.apiUrl
     const playComponetn =() =>{
       return(
         <div>
+          <div></div>
           <Button onClick={this.startPlay} variant="outlined" color="secondary" >
-                  PLAY
+                  Start
           </Button>
           <Myplaylist mylist={this.state.songInlist} voteUp={this.voteUp} voteDon={this.voteDon} />
         </div>

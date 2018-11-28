@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TextField from '@material-ui/core/TextField';
 
 class SearchBar extends Component {
 
@@ -20,6 +21,7 @@ class SearchBar extends Component {
           onChange={(event) => this.onINputChange(event.target.value)}
           type="text"
          />
+         <TextField id="time" type="text"  />
       </div>
     )
   }

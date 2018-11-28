@@ -1,6 +1,7 @@
 body{
     background-color: #252525;
     padding: 0;
+ 
     
 }
 
@@ -27,7 +28,7 @@ html, body {
     margin: 0;
     height: 100%;
     box-sizing: border-box;
-    color: #ffffff;
+
     text-decoration: none;
 }
 
@@ -81,6 +82,16 @@ html, body {
     }
    
 
+/* .live-list{
+    background-color: #ce6f22
+} */
 
 
 
+.card-serch-song{
+    width: 151;
+}
+
+.card-serch-song-img{
+    border-radius: 8px;
+}
