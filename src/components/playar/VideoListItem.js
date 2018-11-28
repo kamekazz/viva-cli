@@ -9,24 +9,36 @@ import AddIcon from '@material-ui/icons/Add';
 
  function VideoListItem(props) {
   const { video } = props;
-    const imageUrl = video.snippet.thumbnails.default.url
+  const imageUrl = video.snippet.thumbnails.default.url
+  const title = video.snippet.title
+
+  
+
+  const tamanoNormal = (title,length) =>{
+    let trimmedStringTitle = title.substring(0, length)
+    if (title.length > length ) {
+      trimmedStringTitle = trimmedStringTitle + '....'
+    }
+    if (title.length < length) {
+      
+    }
+    return trimmedStringTitle
+  }
+
   return (
     <Card className="card-serch-song" >
-      <div >
-        <img  className="card-serch-song-img"src={imageUrl} />
-        <CardContent >
-          <Typography component="h5" variant="h5">
-          {video.snippet.title}
+        <img  className="card-serch-song-item1" src={imageUrl} alt={imageUrl} />
+        <CardContent  className="card-serch-song-item2" >
+          <Typography component="h6" variant="h6">
+          {tamanoNormal(title,40)}
           </Typography>
         </CardContent>
-        <div >
+        <div  className="card-serch-song-item3" >
           <Button    variant="contained" color="secondary"  onClick={()=> props.addvideoToMyList(video)}  aria-label="Play/pause">
             <AddIcon />
           </Button >
         </div>
-      </div>
-
-      </Card>
+    </Card>
   )
 }
 
@@ -38,7 +50,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 export default VideoListItem
 
-// function VideoListItem({video , addvideoToMyList}) {
+
 
 
 

@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+
+import FormControl from '@material-ui/core/FormControl';
+
+
+
 
 class SearchBar extends Component {
 
@@ -14,15 +20,23 @@ class SearchBar extends Component {
   }
 
   render() {
+
+
+
     return (
-      <div className="search-bar">
-        <input 
-          value={this.state.term}
+      <Paper  elevation={5}  className="searchbar">
+      <FormControl fullWidth >
+        <TextField id="time" 
+          value={this.state.term} 
           onChange={(event) => this.onINputChange(event.target.value)}
-          type="text"
-         />
-         <TextField id="time" type="text"  />
-      </div>
+          type="text" 
+          label="Search for Songs or Artists"
+          margin="normal"
+          variant="outlined"
+          color="primary"
+        />
+        </FormControl>
+      </Paper>
     )
   }
 
@@ -35,4 +49,7 @@ class SearchBar extends Component {
 }
 
 
-export default  SearchBar
+
+
+
+export default SearchBar

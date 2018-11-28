@@ -89,9 +89,25 @@ html, body {
 
 
 .card-serch-song{
-    width: 151;
+    display: flex;
+    margin-bottom: 2px;
 }
 
-.card-serch-song-img{
-    border-radius: 8px;
+
+.card-serch-song-item1{
+    flex:1
 }
+.card-serch-song-item2{
+    flex:3
+}
+.card-serch-song-item3{
+    flex:1
+}
+
+
+.searchbar{
+    margin-bottom: 10px;
+}
+
+
+

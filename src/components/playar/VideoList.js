@@ -1,26 +1,28 @@
-import React from 'react'
-import VideoListItem from './VideoListItem'
 
-function VideoList(props) {
-    const videoItems  =  props.videos.map((video) =>{
+import VideoListItem from './VideoListItem'
+import React, { Component } from 'react'
+
+export default class VideoList extends Component {
+
+  render() {
+
+    const videoItems  =  this.props.videos.map((video) =>{
         return (
             <VideoListItem
-            addvideoToMyList={props.addvideoToMyList}
+            addvideoToMyList={this.props.addvideoToMyList}
                 key={video.etag}
                 video={video} 
             />
         )
     })
 
-
-  return (
-    <div >
-        <div className="">
-            {videoItems}
+    return (
+        <div >
+            <div className="">
+                {videoItems}
+            </div>
         </div>
-    </div>
-
-  )
+    )
+  }
 }
 
-export default VideoList

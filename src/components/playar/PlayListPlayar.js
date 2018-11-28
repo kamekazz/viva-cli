@@ -67,10 +67,22 @@ const API_URL = confing.apiUrl
     }, 5000);
   }
 
+  removeformSearch = (v) =>{
+    let allsearchArr = this.state.videos
+   
+   
+    let noEscojido =  allsearchArr.filter(function(hero) {
+      return hero.id !== v.id
+    })
 
+    this.setState({
+      videos: noEscojido
+    })
+  }
   
 
   addvideoToMyList = async (v)=> {
+    this.removeformSearch(v)
     let body = {
       playlistId: this.state.playListId,
       title: v.snippet.title,
