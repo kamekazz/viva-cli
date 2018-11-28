@@ -44,7 +44,6 @@ html, body {
     
     /*Animation code for older Chrome, Safari, Opera*/
     -webkit-transition-property: -webkit-transform;
-    -webkit-transition-duration: 1.2s;
     -webkit-animation-name: rotate;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
@@ -52,7 +51,7 @@ html, body {
     /*Animation code for older Firefox*/
     -moz-transition-property: -moz-transform;
     -moz-animation-name: rotate; 
-    -moz-animation-duration: 1.2s; 
+
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: linear;
     
@@ -101,12 +100,23 @@ html, body {
     flex:3
 }
 .card-serch-song-item3{
-    flex:1
+    flex:1;
+   
+}
+
+.card-serch-in-bootoncolome{
+    display: flex;
+    flex-direction:column;
 }
 
 
 .searchbar{
     margin-bottom: 10px;
+}
+
+.myplaylist-vote-value{
+    background-color: #252525;
+    color: #E54B4B
 }
 
 

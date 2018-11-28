@@ -2,34 +2,57 @@ import React from 'react'
 // import MySong from './MySong'
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
 
 export default function Myplaylist(props) {
 
 
   const songs = props.mylist.map(song =>{
-    return (
-    
-      
-        <li key={song._id}>
-          <img src={song.imageUrl} alt={song.imageUrl} />
-          <p>title: {song.title}</p>
-          <h3>vote: {song.vote}</h3>
-          <button  onClick={()=> props.voteUp(song._id)}>+</button>
-          <button  onClick={()=> props.voteDon(song._id)}>-</button>
-          <hr></hr>
-        </li>
-    
 
+    const tamanoNormal = (title,length) =>{
+      let trimmedStringTitle = title.substring(0, length)
+      if (title.length > length ) {
+        trimmedStringTitle = trimmedStringTitle + '....'
+      }
+      if (title.length < length) {
+        
+      }
+      return trimmedStringTitle
+    }
+    return (
+        <Card className="card-serch-song" key={song._id} >
+          <img  className="card-serch-song-item1" src={song.imageUrl} alt={song.imageUrl}  />
+          <CardContent  className="card-serch-song-item2" >
+            <Typography component="h6" variant="h6">
+            {tamanoNormal(song.title,35)}
+            </Typography>
+
+          </CardContent>
+          <div  className="card-serch-song-item3" >
+          <div  className="card-serch-in-bootoncolome" >
+          <Button    variant="contained" color="secondary"  onClick={()=> props.voteUp(song._id)} aria-label="Play/pause">
+            <KeyboardArrowUp />
+          </Button >
+          <Button  variant="contained" color="primary" aria-label="Play/pause">
+              {song.vote}
+          </Button >
+          <Button    variant="contained" color="secondary"    onClick={()=> props.voteDon(song._id)} aria-label="Play/pause">
+            <KeyboardArrowDown />
+          </Button >
+          </div>
+
+        </div>
+        </Card>
     )
   })
   
   return (
     <div>
-      <Card raised={true} className="live-list"><Typography  variant="h5" component="h2">live Playlist</Typography></Card >
-      <ul>
         {songs}
-      </ul>
-      
     </div>
   )
 }

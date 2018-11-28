@@ -219,9 +219,8 @@ const API_URL = confing.apiUrl
     const playComponetn =() =>{
       return(
         <div>
-          <div></div>
           <Button onClick={this.startPlay} variant="outlined" color="secondary" >
-                  Start
+                  Start Play
           </Button>
           <Myplaylist mylist={this.state.songInlist} voteUp={this.voteUp} voteDon={this.voteDon} />
         </div>
