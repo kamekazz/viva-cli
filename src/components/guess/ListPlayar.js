@@ -24,7 +24,7 @@ const API_URL = confing.apiUrl
     playListId:'',
     songInlist:[],
     videos:[],
-    value: 2,
+    value: 1,
     selectedVideo: null
   }
 

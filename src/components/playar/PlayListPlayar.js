@@ -17,6 +17,7 @@ import FavoriteIcon from '@material-ui/icons/PlayArrow';
 import PersonPinIcon from '@material-ui/icons/Settings';
 
 import Button from '@material-ui/core/Button';
+import Opciones from './Opciones';
 
 
 const API_KEY = confing.API_KEY
@@ -219,13 +220,20 @@ const API_URL = confing.apiUrl
     const playComponetn =() =>{
       return(
         <div>
-          <Button onClick={this.startPlay} variant="outlined" color="secondary" >
+          <div className="playcomnetn-button">
+          <Button  className="playcomnetn-button-item"  onClick={this.startPlay} variant="outlined" color="secondary" >
                   Start Play
           </Button>
+          <samp className="playcomnetn-button-item" ></samp>
+          <Opciones className="playcomnetn-button-item"  playListId={this.state.playListId}></Opciones> 
+          </div> 
           <Myplaylist mylist={this.state.songInlist} voteUp={this.voteUp} voteDon={this.voteDon} />
         </div>
+
       )
     }
+
+    
 
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 1000)
     return (
@@ -240,7 +248,7 @@ const API_URL = confing.apiUrl
       </AppBar>
       {value === 0 && seaerchComponetn() }
       {value === 1 &&  playComponetn()   }
-      {value === 2 &&   <p>https://client-viva.herokuapp.com/xxxxxxx/start/{this.props.match.params.id}</p>  }
+      {value === 2 &&  <Opciones playListId={this.state.playListId}></Opciones>  }
         {this.state.selectedVideo && 
           <VideoDetail 
             video={this.state.selectedVideo[0]}

@@ -120,4 +120,11 @@ html, body {
 }
 
 
-
+.playcomnetn-button{
+    display: flex;
+    padding-bottom: 4px;
+}
+.playcomnetn-button-item{
+    flex:1;
+   
+}
