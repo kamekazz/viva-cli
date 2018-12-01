@@ -49,8 +49,8 @@ const theme = createMuiTheme({
                     <Route path="/signout" component={Signout} />
                     <Route path="/signin" component={Signin} />
                     <Route path="/playlist/:id/:name" component={PlayListPlayar} />
-                    <Route path="/xxxxxxx/start/:id"  component={Start} />
-                    <Route path="/xxxxxx/signin/:id"  component={Signup2} />
+                    <Route path="/x/start/:id"  component={Start} />
+                    <Route path="/x/signin/:id"  component={Signup2} />
                     <Route path="/guess/:id" component={ListPlayar} />
                 </App>
             </MuiThemeProvider>

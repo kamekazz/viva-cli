@@ -7,7 +7,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 export default class Opciones extends Component {
 
   render() {
-    const fullUrl = 'https://client-viva.herokuapp.com/xxxxxxx/start/' + this.props.playListId
+    const fullUrl = 'https://viva-la-musica.firebaseapp.com/x/start/' + this.props.playListId
     return (
       <div>
         <CopyToClipboard onCopy={this.onCopy} text={fullUrl}>

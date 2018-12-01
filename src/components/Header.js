@@ -80,7 +80,7 @@ state={
     };
 
     const disctester = () =>{
-      if (this.state.logoRT) {
+      if (this.props.howPaying) {
          return (
         <img  onClick={this.discRunNow} alt="logo" className="logo" src={logo}/>
       )
@@ -119,7 +119,8 @@ function mapStateToProps(state) {
   return(
      {
       authenticated: state.auth.authenticated,
-        userInfo: state.auth.userInfo
+      userInfo: state.auth.userInfo,
+      howPaying: state.auth.liveSong
      }
   )
 

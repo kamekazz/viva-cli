@@ -1,9 +1,10 @@
-import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO } from '../actions/types';
+import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO, LIVE_SONG } from '../actions/types';
 
 const INITIAL_STATE = {
   authenticated: '',
   errorMessage: '',
-  userInfo:''
+  userInfo:'',
+  liveSong:[]
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -16,6 +17,8 @@ export default function(state = INITIAL_STATE, action) {
     return { ...state, errorMessage: action.payload };
       case AUTH_USER_INFO:
     return { ...state, userInfo: action.payload };
+    case LIVE_SONG:
+  return { ...state, liveSong: action.payload };
     default:
        return state;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions'
 
 export default ChildComponent => {
   class ComposedComponent extends Component {
@@ -24,9 +25,15 @@ export default ChildComponent => {
     }
   }
 
-  function mapStateToProps(state) {
-    return { auth: state.auth.authenticated };
-  }
 
-  return connect(mapStateToProps)(ComposedComponent);
+
+
+  const mapStateToProps = (state) => ({
+     auth: state.auth.authenticated
+  })
+  
+
+  
+
+  return connect(mapStateToProps,actions)(ComposedComponent);
 };

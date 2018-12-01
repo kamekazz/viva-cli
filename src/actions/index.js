@@ -1,6 +1,6 @@
 import axios from 'axios';
 import confing from '../confing'
-import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO} from './types';
+import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO, LIVE_SONG} from './types';
 
 const apiUrl = confing.apiUrl
 
@@ -44,6 +44,25 @@ export const signout = () => {
     payload: ''
   };
 };
+
+export const liveSong = id => {
+  return {
+    type: LIVE_SONG,
+    payload: id
+  };
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // export const getPlaylist = (formProps, callback) => async dispatch => {
 //   const config = {

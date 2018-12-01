@@ -15,9 +15,10 @@ import Tab from '@material-ui/core/Tab';
 import PhoneIcon from '@material-ui/icons/Search';
 import FavoriteIcon from '@material-ui/icons/PlayArrow';
 import PersonPinIcon from '@material-ui/icons/Settings';
-
 import Button from '@material-ui/core/Button';
 import Opciones from './Opciones';
+
+
 
 
 const API_KEY = confing.API_KEY
@@ -129,10 +130,12 @@ const API_URL = confing.apiUrl
   }
 
   startPlay = () =>{
+    this.props.liveSong(this.state.songInlist[0])
     this.setState({
       selectedVideo: this.state.songInlist
     })
     this.removeSong()
+
   }
 
   removeSong = async ()=> {
@@ -263,4 +266,4 @@ const API_URL = confing.apiUrl
 }
 
 
-export default requireAuth(PlayListPlayar);
+export default requireAuth(PlayListPlayar)
