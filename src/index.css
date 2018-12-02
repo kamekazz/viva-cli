@@ -154,3 +154,23 @@ html, body {
     color: #E54B4B;
     
 }
+
+.login-sing{
+    width: 350px;
+}
+
+
+.flex-container {
+  
+    padding: 0;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-container-nada{
+    display: flex;
+    flex-direction:  column;
+    margin: 35px;
+}

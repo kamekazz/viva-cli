@@ -18,7 +18,7 @@ import { Wave } from 'react-animated-text';
 class Header extends Component {
 
   discRunNow = () => {
-    this.setState({logoRT: !this.state.logoRT})      
+       
   }
 
   renderLinks =() =>{

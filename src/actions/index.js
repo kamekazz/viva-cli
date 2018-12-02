@@ -10,12 +10,13 @@ export const signup = (formProps, callback) => async dispatch => {
         `${apiUrl}/api/accounts/new`,
         formProps
       )
-      if (response.data.message) {
+      if (response.data.success) {
         dispatch(newMassages(response.data.message,response.data.success));
+        
       }
       dispatch({ type: AUTH_USER, payload: response.data.token });
       localStorage.setItem('token', response.data.token);
-      callback();
+      callback()
     } catch (e) {
       dispatch({ type: AUTH_ERROR, payload: 'Email in use' });
     }
@@ -29,6 +30,7 @@ export const signin = (formProps, callback) => async dispatch => {
     )
     if (response.data.message) {
       dispatch(newMassages(response.data.message,response.data.success));
+      
     }
     dispatch({ type: AUTH_USER, payload: response.data.token });
     dispatch({ type: AUTH_MSG, payload: response.data.message });

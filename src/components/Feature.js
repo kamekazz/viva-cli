@@ -73,7 +73,6 @@ class Feature extends Component {
               />
              <button>ADD</button>
           </form>
-          <h3>#nuber of list: {this.state.playlistArry.length}</h3>
           <PlaylistOrder playlistArry={this.state.playlistArry}/>
         </div>
     )

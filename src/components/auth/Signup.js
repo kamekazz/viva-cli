@@ -1,48 +1,91 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 class Signup extends Component {
 
-    onSubmit = formProps => {
+    state={
+        userName:'',
+        password:'',
+        progresive:false
+      }
+    
+    
+      onSubmit = () => {
+        let formProps = {
+          userName: this.state.userName,
+          password:this.state.password
+        }
+        this.setState({progresive:true})
         this.props.signup(formProps, () => {
-            this.props.history.push('/feature');
-            console.log('singup done')
+          this.props.history.push('/feature')
+          this.setState({progresive:false})
         });
-     
-    };
+      };
 
-  render() {
-    const { handleSubmit } = this.props;
+      render() {
 
-    return (
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-            <fieldset>
-            <label>Email</label>
-            <Field
-                name="userName"
-                type="text"
-                component="input"
-                autoComplete="none"
-            />
-            </fieldset>
-            <fieldset>
-            <label>Password</label>
-            <Field
-                name="password"
-                type="password"
-                component="input"
-                autoComplete="none"
-            />
-            </fieldset>
-            <div>{this.props.errorMessage}</div>
-            <button>Sign Up!</button>
-        </form>
-    );
-  }
-}
+        const spiner = () =>{
+          if (this.state.progresive) {
+            return <CircularProgress  color="secondary" className="login-sing flex-container-nada" />
+          }
+        }
+    
+        const singinRender =()=>{
+          return(
+            <div  className="flex-container ">
+            <Card className="login-sing flex-container-nada">
+            <form onSubmit={this.onSubmit} className="flex-container-nada">
+                <h1>Sign Up</h1>
+                 <TextField
+                  name="userName"
+                  label="User Name"
+                  value={this.state.userName}
+                  onChange={(e) => this.setState({userName: e.target.value})}
+                  margin="normal"
+                />
+                <TextField
+                  name="password"
+                  label="password"
+                  value={this.state.password}
+                  onChange={(e) => this.setState({password: e.target.value})}
+                  margin="normal"
+                />
+          
+              <div>{this.props.errorMessage}</div>
+      
+              <Button onClick={this.onSubmit} variant="contained" color="secondary" >
+                Submit
+              </Button>
+            </form>
+            </Card>
+            </div>
+          )
+        }
+    
+    
+    
+    
+    
+       
+    
+        return (
+          <div>
+            {this.state.progresive ? spiner() : singinRender()}
+          </div>
+       
+    
+    
+        );
+      }
+    }
 
 function mapStateToProps(state) {
     return { errorMessage: state.auth.errorMessage };
