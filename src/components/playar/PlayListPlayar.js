@@ -27,6 +27,8 @@ const API_URL = confing.apiUrl
 
 
  class PlayListPlayar extends Component {
+  newMassages = this.props.newMassages
+
   state={
     playListId:'',
     songInlist:[],
@@ -103,7 +105,9 @@ const API_URL = confing.apiUrl
         body,
         yourConfig
       )
-      console.log('data back',response.data.message)
+      if (response.data.message) {
+        this.newMassages(response.data.message,response.data.success)
+      }
       this.getMyList()
  
     } catch (e) {
@@ -150,7 +154,11 @@ const API_URL = confing.apiUrl
         `${API_URL}/api/song/delete/${testRemove._id}`,
         yourConfig
       )
-      console.log(response.data)
+      if (response.data.success) {
+        this.newMassages('Next Song',true)
+      } else{
+        this.newMassages(response.data.message,false)
+      }
       this.getMyList()
     } catch (e) {
       console.log(e)
@@ -168,7 +176,9 @@ const API_URL = confing.apiUrl
         `${API_URL}/api/song/voteup/${ev}`,
         yourConfig
       )
-      console.log(response.data.message)
+      if (response.data.message) {
+        this.newMassages(response.data.message,response.data.success)
+      }
       this.getMyList()
     } catch (e) {
       console.log(e)
@@ -186,7 +196,9 @@ const API_URL = confing.apiUrl
         `${API_URL}/api/song/voted/${ev}`,
         yourConfig
       )
-      console.log(response.data.message)
+      if (response.data.message) {
+        this.newMassages(response.data.message,response.data.success)
+      }
       this.getMyList()
     } catch (e) {
       console.log(e)
