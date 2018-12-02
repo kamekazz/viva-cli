@@ -11,35 +11,15 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../components/css/record-33583.svg'
-
-
-
-
-
-
+import { Wave } from 'react-animated-text';
 
 
 
 class Header extends Component {
 
-
-state={
-  logoRT:false,
-  classStriang:'logo2'
-}
-
-
-
   discRunNow = () => {
     this.setState({logoRT: !this.state.logoRT})      
   }
-
-  componentDidUpdate(){
-
-  }
-
-
-
 
   renderLinks =() =>{
     if (this.props.authenticated) {
@@ -59,13 +39,21 @@ state={
   }
 
 
-
-
-
   render() {
 
+    const tamanoNormal = (title,length) =>{
+      let trimmedStringTitle = title.substring(0, length)
+      if (title.length > length ) {
+        trimmedStringTitle = trimmedStringTitle + '....'
+      }
+      if (title.length < length) {
+        
+      }
+      return trimmedStringTitle
+    }
 
 
+    
     const styles = {
       root: {
         flexGrow: 1,
@@ -78,6 +66,8 @@ state={
         marginRight: 20,
       },
     };
+
+   
 
     const disctester = () =>{
       if (this.props.howPaying) {
@@ -92,6 +82,10 @@ state={
 
     }
 
+    const animadText = () => (
+      <Wave text={tamanoNormal(this.props.howPaying.title,20)} />
+    )
+
     
     return (
       <div style={styles.root}>
@@ -100,8 +94,8 @@ state={
           <IconButton style={styles.menuButton} color="inherit" aria-label="Menu">
             {disctester()}
           </IconButton>
-          <Typography variant="h6" style={styles.grow} color="inherit" >
-           
+          <Typography variant="subtitle1" style={styles.grow} color="inherit" >
+           {this.props.howPaying && animadText()}
           </Typography>
           {this.renderLinks()}
         </Toolbar>

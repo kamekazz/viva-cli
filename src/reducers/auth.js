@@ -3,7 +3,7 @@ import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO, LIVE_SONG } from '../act
 const INITIAL_STATE = {
   authenticated: '',
   errorMessage: '',
-  userInfo:'',
+  userInfo:[],
   liveSong:[]
 };
 
