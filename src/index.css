@@ -140,3 +140,17 @@ html, body {
 #message-id-err{
     color: #E54B4B
 }
+
+
+.seleteson {
+ 
+    top: 0px;
+}
+
+
+.seleteson:active {
+
+    top: 3px;
+    color: #E54B4B;
+    
+}

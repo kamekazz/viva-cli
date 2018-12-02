@@ -25,13 +25,13 @@ import Typography from '@material-ui/core/Typography';
   }
 
   return (
-    <Card className="card-serch-song"  onClick={()=> props.addvideoToMyList(video)}  >
+    <Card className="card-serch-song seleteson"  onClick={()=> props.addvideoToMyList(video)}  >
         <img  className="card-serch-song-item1" src={imageUrl} alt={imageUrl} />
-        <CardContent  className="card-serch-song-item2" >
-          <Typography component="h6" variant="h6">
+        <div  className="card-serch-song-item2 seleteson" >
+          <Typography component="h6" className="seleteson" variant="h6">
           {tamanoNormal(title,40)}
           </Typography>
-        </CardContent>
+        </div>
     </Card>
   )
 }
