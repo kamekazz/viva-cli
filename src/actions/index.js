@@ -1,6 +1,6 @@
 import axios from 'axios';
 import confing from '../confing'
-import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO, LIVE_SONG} from './types';
+import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO, LIVE_SONG,FLASH_MESSAGES} from './types';
 
 const apiUrl = confing.apiUrl
 
@@ -9,8 +9,10 @@ export const signup = (formProps, callback) => async dispatch => {
       const response = await axios.post(
         `${apiUrl}/api/accounts/new`,
         formProps
-      );
- 
+      )
+      if (response.data.message) {
+        dispatch(newMassages(response.data.message,response.data.success));
+      }
       dispatch({ type: AUTH_USER, payload: response.data.token });
       localStorage.setItem('token', response.data.token);
       callback();
@@ -24,7 +26,10 @@ export const signin = (formProps, callback) => async dispatch => {
     const response = await axios.post(
       `${apiUrl}/api/accounts/login`,
       formProps
-    );
+    )
+    if (response.data.message) {
+      dispatch(newMassages(response.data.message,response.data.success));
+    }
     dispatch({ type: AUTH_USER, payload: response.data.token });
     dispatch({ type: AUTH_MSG, payload: response.data.message });
     dispatch({ type: AUTH_USER_INFO, payload: response.data.user });
@@ -50,6 +55,18 @@ export const liveSong = id => {
     type: LIVE_SONG,
     payload: id
   };
+}
+
+export const newMassages = (text,type) => {
+  let payload = {
+    text:text,
+    type:type,
+  }
+  return {
+    type: FLASH_MESSAGES,
+    payload: payload
+  };
+  
 }
 
 

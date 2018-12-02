@@ -17,7 +17,9 @@ import ListPlayar from './components/guess/ListPlayar';
 import Signup2 from './components/guess/Signup2';
 import Start from './components/guess/Start';
 import './index.css'
-// git push heroku master
+
+import { FlashMessagesList } from './laout/FlashMessagesList';
+
 const store = createStore(
     reducers,
     {
@@ -53,6 +55,7 @@ const theme = createMuiTheme({
                     <Route path="/x/signin/:id"  component={Signup2} />
                     <Route path="/guess/:id" component={ListPlayar} />
                 </App>
+                <FlashMessagesList />
             </MuiThemeProvider>
         </BrowserRouter>
     </Provider>

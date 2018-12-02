@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   authenticated: '',
   errorMessage: '',
   userInfo:[],
-  liveSong:[]
+  liveSong:[],
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -21,6 +21,6 @@ export default function(state = INITIAL_STATE, action) {
   return { ...state, liveSong: action.payload };
     default:
        return state;
-}
+  }
  
 }

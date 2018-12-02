@@ -7,7 +7,10 @@ export const LIVE_SONG = 'liveSong';
 
 
 
+
 export const GET_PLAYLIST = 'get_playlist';
+
+export const FLASH_MESSAGES = 'flash_messages'
 
 
 
