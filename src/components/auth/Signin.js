@@ -16,7 +16,7 @@ class Signin extends Component {
     password:'',
     progresive:false
   }
-
+  
 
   onSubmit = () => {
     let formProps = {
@@ -24,9 +24,12 @@ class Signin extends Component {
       password:this.state.password
     }
     this.setState({progresive:true})
-    this.props.signin(formProps, () => {
-      this.props.history.push('/feature')
-      this.setState({progresive:false})
+    this.props.signin(formProps, (isValed) => {
+      if (isValed) {
+        this.props.history.push('/feature')
+      } else {
+        this.setState({progresive:false})
+      }
     });
   };
 
@@ -58,9 +61,6 @@ class Signin extends Component {
               onChange={(e) => this.setState({password: e.target.value})}
               margin="normal"
             />
-      
-          <div>{this.props.errorMessage}</div>
-  
           <Button onClick={this.onSubmit} variant="contained" color="secondary" >
             Submit
           </Button>

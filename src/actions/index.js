@@ -1,6 +1,6 @@
 import axios from 'axios';
 import confing from '../confing'
-import { AUTH_USER, AUTH_ERROR,AUTH_MSG,AUTH_USER_INFO, LIVE_SONG,FLASH_MESSAGES} from './types';
+import { AUTH_USER, AUTH_ERROR,AUTH_USER_INFO, LIVE_SONG,FLASH_MESSAGES} from './types';
 
 const apiUrl = confing.apiUrl
 
@@ -28,15 +28,18 @@ export const signin = (formProps, callback) => async dispatch => {
       `${apiUrl}/api/accounts/login`,
       formProps
     )
-    if (response.data.message) {
-      dispatch(newMassages(response.data.message,response.data.success));
-      
+    if (response.data.success) {
+      dispatch(newMassages(response.data.message,response.data.success))
+      localStorage.setItem('token', response.data.token)
+      dispatch({ type: AUTH_USER, payload: response.data.token })
+      dispatch({ type: AUTH_USER_INFO, payload: response.data.user })
+
+      callback(true)
+    }else{
+
+      dispatch(newMassages(response.data.message,response.data.success))
+      callback(false)
     }
-    dispatch({ type: AUTH_USER, payload: response.data.token });
-    dispatch({ type: AUTH_MSG, payload: response.data.message });
-    dispatch({ type: AUTH_USER_INFO, payload: response.data.user });
-    localStorage.setItem('token', response.data.token);
-    callback();
   } catch (e) {
     dispatch({ type: AUTH_ERROR, payload: 'Invalid login credentials' });
   }
