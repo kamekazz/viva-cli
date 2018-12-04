@@ -174,3 +174,8 @@ html, body {
     flex-direction:  column;
     margin: 35px;
 }
+
+.appBar{
+    margin-bottom: 4rem
+}
+

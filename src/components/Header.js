@@ -57,6 +57,7 @@ class Header extends Component {
     const styles = {
       root: {
         flexGrow: 1,
+        
       },
       grow: {
         flexGrow: 1,
@@ -88,8 +89,8 @@ class Header extends Component {
 
     
     return (
-      <div style={styles.root}>
-      <AppBar position="static">
+      <div className="appBar" style={styles.root}>
+      <AppBar >
         <Toolbar>
           <IconButton style={styles.menuButton} color="inherit" aria-label="Menu">
             {disctester()}

@@ -4,14 +4,22 @@ import YouTube from 'react-youtube';
 
 export default class VideoDetail extends Component {
 
-  
+
+
+  _onReady = (event) => {
+    // access to player in all event handlers via event.target
+    // event.target.pauseVideo();
+    let data =   event.target.getDuration()
+     console.log(data)
+  }
+
 
 
   render() {
-    
+
     const opts = {
-      height: '0',
-      width: '0',
+      height: 500,
+      width: '100%',
       playerVars: { // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
         controls:0,
@@ -19,20 +27,20 @@ export default class VideoDetail extends Component {
       }
     };
 
-
     const videoId = this.props.video.videoId;
 
 
     return (
-      <div>
+      <div >
       <YouTube
         videoId={videoId}
         opts={opts}
-        onReady={this._onReady}
+        onStateChange={this._onReady}
         onEnd={this.props.neaxetSong} 
       />
       </div>
     )
+
   }
 
 

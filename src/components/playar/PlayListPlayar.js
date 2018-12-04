@@ -17,6 +17,9 @@ import FavoriteIcon from '@material-ui/icons/PlayArrow';
 import PersonPinIcon from '@material-ui/icons/Settings';
 import Button from '@material-ui/core/Button';
 import Opciones from './Opciones';
+import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
+import QrCode from './QrCode';
 
 
 
@@ -53,6 +56,7 @@ const API_URL = confing.apiUrl
       q: term,
       type: 'video',
       videoCategoryId:10,
+      videoDuration:['short','medium'],
       maxResults:7
     };
     axios.get(ROOT_URL, { params: params })
@@ -254,22 +258,36 @@ const API_URL = confing.apiUrl
     return (
       <div style={styles.root}>
    
-      <AppBar position="static">
-        <Tabs value={value}  onChange={this.handleChange} fullWidth >
-          <Tab icon={<PhoneIcon />} />
-          <Tab icon={<FavoriteIcon />} />
-          <Tab icon={<PersonPinIcon />} />
-        </Tabs>
-      </AppBar>
-      {value === 0 && seaerchComponetn() }
-      {value === 1 &&  playComponetn()   }
-      {value === 2 &&  <Opciones playListId={this.state.playListId}></Opciones>  }
+      <Grid container >
+        <Grid item xs={12} sm={6} md={5} xl={4}>
+        <AppBar position="static">
+          <Tabs value={value}  onChange={this.handleChange} fullWidth >
+            <Tab icon={<PhoneIcon />} />
+            <Tab icon={<FavoriteIcon />} />
+            <Tab icon={<PersonPinIcon />} />
+          </Tabs>
+        </AppBar>
+        {value === 0 && seaerchComponetn() }
+        {value === 1 &&  playComponetn()   }
+        {value === 2 &&  <Opciones playListId={this.state.playListId}></Opciones>  }
+      </Grid>
+      <Grid item xs={12} sm={6}  md={7} xl={8}>
         {this.state.selectedVideo && 
           <VideoDetail 
             video={this.state.selectedVideo[0]}
             neaxetSong={this.startPlay}
           />
         }
+        <Grid container >
+          <Grid item  md={3} xl={4}>
+
+          </Grid>
+          <Grid item  md={3} xl={4}>
+            <QrCode playListId={this.state.playListId} />
+          </Grid>
+        </Grid>
+        </Grid>
+      </Grid>
       </div>
     );
   }
