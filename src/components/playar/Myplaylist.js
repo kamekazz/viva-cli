@@ -6,12 +6,12 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
+import Zoom from '@material-ui/core/Zoom';
 
 export default function Myplaylist(props) {
 
 
   const songs = props.mylist.map(song =>{
-
     const tamanoNormal = (title,length) =>{
       let trimmedStringTitle = title.substring(0, length)
       if (title.length > length ) {
@@ -23,7 +23,8 @@ export default function Myplaylist(props) {
       return trimmedStringTitle
     }
     return (
-        <Card className="card-serch-song" key={song._id} >
+      <Zoom in={true} key={song._id} >
+        <Card className="card-serch-song" >
           <img  className="card-serch-song-item1" src={song.imageUrl} alt={song.imageUrl}  />
           <CardContent  className="card-serch-song-item2" >
             <Typography component="h6" variant="h6">
@@ -46,6 +47,7 @@ export default function Myplaylist(props) {
 
         </div>
         </Card>
+        </Zoom>
     )
   })
   

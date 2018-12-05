@@ -12,6 +12,7 @@ export default class VideoList extends Component {
             addvideoToMyList={this.props.addvideoToMyList}
                 key={video.etag}
                 video={video} 
+                
             />
         )
     })

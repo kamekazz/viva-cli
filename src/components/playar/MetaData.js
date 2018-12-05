@@ -16,7 +16,7 @@ import * as actions from '../../actions'
     return (
       <div>
         <img 
-          // style={{maxWidth:'300px'}}
+          style={{height:'300px'}}
           src={gif} alt='totos' />
       </div>
     )

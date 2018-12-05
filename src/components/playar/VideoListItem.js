@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
+import Grow from '@material-ui/core/Grow';
 
 
 
@@ -23,15 +24,24 @@ import Typography from '@material-ui/core/Typography';
     return trimmedStringTitle
   }
 
+  
+
+
+
+
   return (
-    <Card className="card-serch-song seleteson"  onClick={()=> props.addvideoToMyList(video)}  >
+    <Grow in={true}  >
+      <Card className="card-serch-song seleteson"  onClick={()=> props.addvideoToMyList(video)}  >
         <img  className="card-serch-song-item1" src={imageUrl} alt={imageUrl} />
         <div  className="card-serch-song-item2 seleteson" >
           <Typography component="h6" className="seleteson" variant="h6">
-          {tamanoNormal(title,40)}
+            {tamanoNormal(title,40)}
           </Typography>
         </div>
-    </Card>
+      </Card>
+    </Grow>
+
+
   )
 }
 
