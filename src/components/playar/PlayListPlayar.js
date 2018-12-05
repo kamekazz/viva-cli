@@ -271,37 +271,43 @@ const API_URL = confing.apiUrl
       <div style={styles.root}>
    
       <Grid container >
-        <Grid item xs={12} sm={6} md={5} xl={4}>
-        <AppBar position="static">
-          <Tabs value={value}  onChange={this.handleChange} fullWidth >
-            <Tab icon={<PhoneIcon />} />
-            <Tab icon={<FavoriteIcon />} />
-            <Tab icon={<PersonPinIcon />} />
-          </Tabs>
-        </AppBar>
-        {value === 0 && seaerchComponetn() }
-        {value === 1 &&  playComponetn()   }
-        {value === 2 &&  renderSetiteng()  }
-      </Grid>
-      <Grid item xs={12} sm={6}  md={7} xl={8}>
-        {this.state.selectedVideo && 
-          <VideoDetail 
-            video={this.state.selectedVideo[0]}
-            neaxetSong={this.startPlay}
-          />
-        }
-        <Hidden xsDown>
-          <Grid container >
-            <Grid item  md={3} xl={4}>
-              <MetaData gifId={this.props.match.params.name} />
-            </Grid>
-            <Grid item  md={3} xl={4}>
-              <QrCode playListId={this.state.playListId} />
-            </Grid>
-          </Grid>
-        </Hidden>
 
+        <Grid item xs={12} sm={6} md={5} xl={4}>
+          <AppBar position="static">
+            <Tabs value={value}  onChange={this.handleChange} fullWidth >
+              <Tab icon={<PhoneIcon />} />
+              <Tab icon={<FavoriteIcon />} />
+              <Tab icon={<PersonPinIcon />} />
+            </Tabs>
+          </AppBar>
+          {value === 0 && seaerchComponetn() }
+          {value === 1 &&  playComponetn()   }
+          {value === 2 &&  renderSetiteng()  }
         </Grid>
+
+        <Grid item xs={12} sm={6}  md={7} xl={8}>
+          <div style={{display:'flex',flexDirection:'column'}}>
+            <div style={{flexGrow:'1'}}>
+            {this.state.selectedVideo && 
+              <VideoDetail 
+              video={this.state.selectedVideo[0]}
+              neaxetSong={this.startPlay}
+              />
+            }
+            </div>
+            <div style={{flexGrow:'1'}}>
+            <Hidden xsDown >
+              <div style={{display: 'flex',flexWrap:'wrap',alignItems:'flex-start'}}>
+                <MetaData style={{flexGrow: '1'}} gifId={this.props.match.params.name}  ></MetaData> 
+                <QrCode style={{flexGrow: '1'}} playListId={this.state.playListId} />
+              </div>   
+            </Hidden>
+            </div>
+          </div>
+
+    
+        </Grid>
+      
       </Grid>
       </div>
     );

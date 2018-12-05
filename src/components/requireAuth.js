@@ -29,7 +29,8 @@ export default ChildComponent => {
 
 
   const mapStateToProps = (state) => ({
-     auth: state.auth.authenticated
+     auth: state.auth.authenticated,
+     gif: state.auth.randamGif
   })
   
 

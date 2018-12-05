@@ -8,15 +8,16 @@ import * as actions from '../../actions'
   componentDidMount(){
     this.props.aGetGif(this.props.gifId)
   }
+  
   render() {
+    
     const gif = this.props.gif
-
-
 
     return (
       <div>
-        MetaData
-        <img  src= {gif} alt={gif} />
+        <img 
+          // style={{maxWidth:'300px'}}
+          src={gif} alt='totos' />
       </div>
     )
   }

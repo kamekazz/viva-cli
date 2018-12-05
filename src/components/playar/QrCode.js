@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Paper from '@material-ui/core/Paper';
 var QRCode = require('qrcode-react');
 
 export default class QrCode extends Component {
@@ -10,7 +9,7 @@ export default class QrCode extends Component {
 
     const fullUrl = 'https://viva-la-musica.firebaseapp.com/x/start/' + this.props.playListId
     return (
-      <div style={{padding:'12px'}}>
+      <div >
             <QRCode
              value={fullUrl}
              bgColor={'#E54B4B'}

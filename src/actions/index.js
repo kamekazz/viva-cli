@@ -6,7 +6,7 @@ import { AUTH_USER, AUTH_ERROR,AUTH_USER_INFO, LIVE_SONG,FLASH_MESSAGES,GIF} fro
 
 
 const apiUrl = confing.apiUrl
-const giphyAPI_KEY = confing.giphyAPI_KEY
+
 
 
 export const signup = (formProps, callback) => async dispatch => {
@@ -82,10 +82,10 @@ export const newMassages = (text,type) => {
 export const  aGetGif = (playList) => async dispatch => {
   try {
     const response = await axios.get(
-      `http://api.giphy.com/v1/gifs/random?api_key=j0HBRP5jD63FuDip0ODotIluJIEOiKBw&tag=${playList}`
+      `https://api.unsplash.com/photos/random?client_id=307694c6afc9cd55d02c32ec636ef1e15974cce8e3168e01e143a312b8576c77&query=${playList}`
     )
-    console.log(response.data.data.image_original_url)
-    dispatch({ type: GIF, payload:  response.data.data.image_original_url});
+    console.log(response.data.urls.small)
+    dispatch({ type: GIF, payload:  response.data.urls.small});
   } catch (e) {
     console.log(e)
   }
