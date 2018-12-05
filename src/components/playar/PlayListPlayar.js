@@ -6,6 +6,8 @@ import SearchBar from '../playar/SearchBar';
 import VideoDetail from '../playar/VideoDetail'
 import VideoList from './VideoList'
 import Myplaylist from './Myplaylist'
+import MetaData from './MetaData'
+
 import axios from 'axios';
 import requireAuth from '../requireAuth';
 
@@ -291,7 +293,7 @@ const API_URL = confing.apiUrl
         <Hidden xsDown>
           <Grid container >
             <Grid item  md={3} xl={4}>
-              
+              <MetaData gifId={this.props.match.params.name} />
             </Grid>
             <Grid item  md={3} xl={4}>
               <QrCode playListId={this.state.playListId} />

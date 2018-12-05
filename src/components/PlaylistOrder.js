@@ -18,11 +18,7 @@ export default function PlaylistOrder(props) {
 
     
 
-    const hpDate = (d)=>{
-        let nesDate = d
-        let timestamp = nesDate.getTime()
-        return timestamp
-    }
+
 
   return (
     <div >

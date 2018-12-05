@@ -1,8 +1,13 @@
 import axios from 'axios';
 import confing from '../confing'
-import { AUTH_USER, AUTH_ERROR,AUTH_USER_INFO, LIVE_SONG,FLASH_MESSAGES} from './types';
+import { AUTH_USER, AUTH_ERROR,AUTH_USER_INFO, LIVE_SONG,FLASH_MESSAGES,GIF} from './types';
+
+
+
 
 const apiUrl = confing.apiUrl
+const giphyAPI_KEY = confing.giphyAPI_KEY
+
 
 export const signup = (formProps, callback) => async dispatch => {
     try {
@@ -74,6 +79,17 @@ export const newMassages = (text,type) => {
   
 }
 
+export const  aGetGif = (playList) => async dispatch => {
+  try {
+    const response = await axios.get(
+      `http://api.giphy.com/v1/gifs/random?api_key=j0HBRP5jD63FuDip0ODotIluJIEOiKBw&tag=${playList}`
+    )
+    console.log(response.data.data.image_original_url)
+    dispatch({ type: GIF, payload:  response.data.data.image_original_url});
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 
 
@@ -85,20 +101,3 @@ export const newMassages = (text,type) => {
 
 
 
-
-// export const getPlaylist = (formProps, callback) => async dispatch => {
-//   const config = {
-//     headers: {'authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…yOTh9.1cv0Wjq2kc9UGVey0kETxGSq1PWlrFmUpi3Ymb0KNkc"}
-//   }
-//   try {
-//     const response = await axios.get( 
-//       `${apiUrl}/api/playlist/getall`,
-//       '',
-//       config
-//     )
-//     console.log('data back',response.data)
-//     callback();
-//   } catch (e) {
-//     console.log(e)
-//   }
-// };
