@@ -295,10 +295,10 @@ const API_URL = confing.apiUrl
               />
             }
             </div>
-            <div style={{flexGrow:'1'}}>
+            <div style={{flexGrow:'1',padding:'20px'}}>
             <Hidden xsDown >
               <div style={{display: 'flex',flexWrap:'wrap',alignItems:'flex-start'}}>
-                <MetaData style={{flexGrow: '1'}} gifId={this.props.match.params.name}  ></MetaData> 
+                <MetaData style={{flexGrow: '1'}} gifId={this.props.match.params.name} songInlist={this.state.songInlist}  ></MetaData> 
                 <QrCode style={{flexGrow: '1'}} playListId={this.state.playListId} />
               </div>   
             </Hidden>

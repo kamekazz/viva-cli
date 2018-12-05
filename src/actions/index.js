@@ -84,7 +84,6 @@ export const  aGetGif = (playList) => async dispatch => {
     const response = await axios.get(
       `https://api.unsplash.com/photos/random?client_id=307694c6afc9cd55d02c32ec636ef1e15974cce8e3168e01e143a312b8576c77&query=${playList}`
     )
-    console.log(response.data.urls.small)
     dispatch({ type: GIF, payload:  response.data.urls.small});
   } catch (e) {
     console.log(e)

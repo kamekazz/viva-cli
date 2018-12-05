@@ -13,19 +13,80 @@ import IconButton from '@material-ui/core/IconButton';
 import logo from '../components/css/record-33583.svg'
 import { Wave } from 'react-animated-text';
 
+import MunuButton from './MunuButton'
+
+
+
+
 
 
 class Header extends Component {
 
-  discRunNow = () => {
-       
+  state={
+    windowSize:null,
+    link:120,
+    anchorEl: null
   }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  updateWindowDimensions =()=> {
+    this.setState({ windowSize: window.innerWidth })
+    this.hpchevaled()
+  }
+
+  hpchevaled = () => {
+    if (this.state.windowSize > 801 ) {
+      this.setState({ link: 100 });
+
+    }
+    if (this.state.windowSize <= 800 && this.state.windowSize > 701  ) {
+      this.setState({ link: 50 });
+
+    }
+     if (this.state.windowSize <= 700 && this.state.windowSize > 601  ) {
+      this.setState({ link: 37 });
+      
+    }
+    if (this.state.windowSize <= 600 && this.state.windowSize > 501 ) {
+      this.setState({ link: 30 });
+    }
+     if (this.state.windowSize <= 500 && this.state.windowSize > 401) {
+      this.setState({ link: 20 });
+
+    }
+    if (this.state.windowSize <= 400 && this.state.windowSize > 301) {
+      this.setState({ link: 20 });
+ 
+    }
+    if (this.state.windowSize <= 300 && this.state.windowSize > 201) {
+      this.setState({ link: 10 });
+
+    }
+     if (this.state.windowSize <= 200 ) {
+      this.setState({ link: 5 });
+
+    }
+    
+  }
+
+
+  
+  
+
 
   renderLinks =() =>{
     if (this.props.authenticated) {
       return (
         <div>
-           <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signout"><Button variant="contained" color="secondary">Sign Out</Button></Link>
+          <Link style={{ textDecoration: 'none',color: '#ffffff'}} to="/signout"><Button variant="contained" color="secondary">Sign Out</Button></Link>
         </div>
       );
     } else {
@@ -39,7 +100,15 @@ class Header extends Component {
   }
 
 
+
+
   render() {
+
+    
+
+    
+
+
 
     const tamanoNormal = (title,length) =>{
       let trimmedStringTitle = title.substring(0, length)
@@ -84,7 +153,7 @@ class Header extends Component {
     }
 
     const animadText = () => (
-      <Wave text={tamanoNormal(this.props.howPaying.title,20)} />
+      <Wave text={tamanoNormal(this.props.howPaying.title,this.state.link)} />
     )
 
     
@@ -98,7 +167,7 @@ class Header extends Component {
           <Typography variant="subtitle1" style={styles.grow} color="inherit" >
            {this.props.howPaying && animadText()}
           </Typography>
-          {this.renderLinks()}
+          <MunuButton authenticated={this.props.authenticated} />
         </Toolbar>
       </AppBar>
       </div>
