@@ -45,7 +45,7 @@ const theme = createMuiTheme({
         <BrowserRouter>
             <MuiThemeProvider theme={theme}>
                 <App>
-                    <Route path="/" exact component={Welcome} />
+                    <Route path="/" exact component={Signup} />
                     <Route path="/signup" component={Signup} />
                     <Route path="/feature" component={Feature} />
                     <Route path="/signout" component={Signout} />

@@ -6,12 +6,11 @@ export default class VideoDetail extends Component {
 
 
 
-  _onReady = (event) => {
-    // access to player in all event handlers via event.target
-    // event.target.pauseVideo();
-    let data =   event.target.getDuration()
-     console.log(data)
-  }
+  // _onReady = (event) => {
+  //   // access to player in all event handlers via event.target
+  //   // event.target.pauseVideo();
+  //   let data =   event.target.getDuration()
+  // }
 
 
 
@@ -35,7 +34,7 @@ export default class VideoDetail extends Component {
       <YouTube
         videoId={videoId}
         opts={opts}
-        onStateChange={this._onReady}
+        // onStateChange={this._onReady}
         onEnd={this.props.neaxetSong} 
       />
       </div>

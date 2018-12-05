@@ -17,10 +17,11 @@ import FavoriteIcon from '@material-ui/icons/PlayArrow';
 import PersonPinIcon from '@material-ui/icons/Settings';
 import Button from '@material-ui/core/Button';
 import Opciones from './Opciones';
-import Toolbar from '@material-ui/core/Toolbar';
+
 import Grid from '@material-ui/core/Grid';
 import QrCode from './QrCode';
 
+import Hidden from '@material-ui/core/Hidden';
 
 
 
@@ -252,6 +253,15 @@ const API_URL = confing.apiUrl
       )
     }
 
+    const renderSetiteng =()=>{
+      return(
+        <div>
+          <Opciones playListId={this.state.playListId}></Opciones>
+          <QrCode playListId={this.state.playListId} />
+        </div>
+      )
+    }
+
 
     
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 1000)
@@ -269,7 +279,7 @@ const API_URL = confing.apiUrl
         </AppBar>
         {value === 0 && seaerchComponetn() }
         {value === 1 &&  playComponetn()   }
-        {value === 2 &&  <Opciones playListId={this.state.playListId}></Opciones>  }
+        {value === 2 &&  renderSetiteng()  }
       </Grid>
       <Grid item xs={12} sm={6}  md={7} xl={8}>
         {this.state.selectedVideo && 
@@ -278,14 +288,17 @@ const API_URL = confing.apiUrl
             neaxetSong={this.startPlay}
           />
         }
-        <Grid container >
-          <Grid item  md={3} xl={4}>
+        <Hidden xsDown>
+          <Grid container >
+            <Grid item  md={3} xl={4}>
+              
+            </Grid>
+            <Grid item  md={3} xl={4}>
+              <QrCode playListId={this.state.playListId} />
+            </Grid>
+          </Grid>
+        </Hidden>
 
-          </Grid>
-          <Grid item  md={3} xl={4}>
-            <QrCode playListId={this.state.playListId} />
-          </Grid>
-        </Grid>
         </Grid>
       </Grid>
       </div>

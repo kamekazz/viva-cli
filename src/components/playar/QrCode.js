@@ -9,7 +9,6 @@ export default class QrCode extends Component {
   render() {
 
     const fullUrl = 'https://viva-la-musica.firebaseapp.com/x/start/' + this.props.playListId
-    console.log(fullUrl);
     return (
       <div style={{padding:'12px'}}>
             <QRCode

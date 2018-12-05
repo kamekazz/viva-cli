@@ -179,3 +179,13 @@ html, body {
     margin-bottom: 4rem
 }
 
+.display-list{
+    background:url("./components/css/hanny-naibaho-388579-unsplash.jpg") no-repeat center ;
+    background-size: cover;
+}
+
+.playlist-h1{
+    position: relative;
+    
+    top: 15px;
+}
