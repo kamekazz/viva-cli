@@ -17,7 +17,7 @@ export default class Start extends Component {
     shouldNavigateAway() {
         let id = this.props.match.params.id
         if (!localStorage.getItem('token')) {
-            this.props.history.push(`/xxxxxx/signin/${id}`);
+            this.props.history.push(`/x/signin/${id}`);
         }else{
             this.props.history.push(`/guess/${this.props.match.params.id}`);
         }

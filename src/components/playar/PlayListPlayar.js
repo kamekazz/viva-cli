@@ -80,8 +80,6 @@ const API_URL = confing.apiUrl
 
   removeformSearch = (v) =>{
     let allsearchArr = this.state.videos
-   
-   
     let noEscojido =  allsearchArr.filter(function(hero) {
       return hero.id !== v.id
     })

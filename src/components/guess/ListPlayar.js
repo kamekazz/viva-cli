@@ -13,6 +13,10 @@ import Tab from '@material-ui/core/Tab';
 import PhoneIcon from '@material-ui/icons/Search';
 import FavoriteIcon from '@material-ui/icons/PlayArrow';
 import PersonPinIcon from '@material-ui/icons/Settings';
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
+import Opciones from '../playar/Opciones';
+
 
 
 const API_KEY = confing.API_KEY
@@ -20,6 +24,8 @@ const API_URL = confing.apiUrl
 
 
  class ListPlayar extends Component {
+  newMassages = this.props.newMassages
+
   state={
     playListId:'',
     songInlist:[],
@@ -75,6 +81,7 @@ const API_URL = confing.apiUrl
   
 
   addvideoToMyList = async (v)=> {
+    this.removeformSearch(v)
     let body = {
       playlistId: this.state.playListId,
       title: v.snippet.title,
@@ -93,9 +100,10 @@ const API_URL = confing.apiUrl
         body,
         yourConfig
       )
-      console.log('data back',response.data.message)
+      if (response.data.message) {
+        this.newMassages(response.data.message,response.data.success)
+      }
       this.getMyList()
- 
     } catch (e) {
       console.log(e)
     }
@@ -113,11 +121,22 @@ const API_URL = confing.apiUrl
         yourConfig
       )
       this.setState({songInlist: response.data.data})
-
     } catch (e) {
       console.log(e)
     }
   }
+
+  removeformSearch = (v) =>{
+    let allsearchArr = this.state.videos
+    let noEscojido =  allsearchArr.filter(function(hero) {
+      return hero.id !== v.id
+    })
+
+    this.setState({
+      videos: noEscojido
+    })
+  }
+
 
 
 
@@ -202,7 +221,7 @@ const API_URL = confing.apiUrl
         </AppBar>
         {value === 0 && seaerchComponetn()    }
         {value === 1 &&  <Myplaylist mylist={this.state.songInlist} voteUp={this.voteUp} voteDon={this.voteDon} />   }
-        {value === 2 &&    <h1>ok 3</h1>  }
+        {value === 2 &&    <Opciones className="playcomnetn-button-item"  playListId={this.state.playListId}></Opciones>   }
       </div>
         
     );
@@ -212,4 +231,4 @@ const API_URL = confing.apiUrl
 }
 
 
-export default ListPlayar
+export default connect(null,actions) (ListPlayar)
