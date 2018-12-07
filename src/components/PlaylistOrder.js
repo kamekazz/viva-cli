@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Slide from '@material-ui/core/Slide';
 
 export default function PlaylistOrder(props) {
 
@@ -36,6 +37,7 @@ export default function PlaylistOrder(props) {
         <TableBody>
           {props.playlistArry.map(row => {
             return (
+              <Slide direction="up" in={true} mountOnEnter unmountOnExit>
               <TableRow key={row.id}>
                 <TableCell ><Link to={`/playlist/${row._id}/${row.name}`}  ><Button variant="contained" color="primary">Open</Button></Link></TableCell>
                 <TableCell component="th" scope="row">
@@ -45,7 +47,8 @@ export default function PlaylistOrder(props) {
                 <TableCell >{hpRanderNumberG(20)}</TableCell>
                 <TableCell >{row.created}</TableCell>
               </TableRow>
-            );
+              </Slide>
+            )
           })}
         </TableBody>
       </Table>

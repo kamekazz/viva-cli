@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Typography from '@material-ui/core/Typography';
 
 class Signup extends Component {
 
@@ -43,7 +44,9 @@ class Signup extends Component {
             <div  className="flex-container ">
             <Card className="login-sing flex-container-nada">
             <form onSubmit={this.onSubmit} className="flex-container-nada">
-                <h1>Sign Up</h1>
+            <Typography component="h2" variant="display2" color="secondary" gutterBottom>
+              Sign Up
+            </Typography>
                  <TextField
                   name="userName"
                   label="User Name"

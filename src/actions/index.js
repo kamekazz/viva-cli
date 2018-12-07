@@ -53,12 +53,27 @@ export const signin = (formProps, callback) => async dispatch => {
 
 export const signout = () => {
   localStorage.removeItem('token');
-
   return {
     type: AUTH_USER,
-    payload: ''
+    payload: null
   };
-};
+}
+
+export const signout2 = () => {
+  localStorage.removeItem('token');
+  return {
+    type: AUTH_USER_INFO,
+    payload: null
+  };
+}
+
+export const signout3 = () => {
+  localStorage.removeItem('token');
+  return {
+    type: LIVE_SONG,
+    payload: null
+  }
+}
 
 export const liveSong = id => {
   return {

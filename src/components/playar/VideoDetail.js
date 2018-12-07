@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import YouTube from 'react-youtube';
+import Slide from '@material-ui/core/Slide';
 
 export default class VideoDetail extends Component {
 
