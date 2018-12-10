@@ -4,10 +4,10 @@ import * as actions from '../../actions'
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
+
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+
 import Typography from '@material-ui/core/Typography';
 
 
@@ -30,7 +30,7 @@ import Typography from '@material-ui/core/Typography';
     const gif = this.props.gif
 
     return (
-      <Card style={{height:'300px',width:'300px'}} >
+      <Card style={{height:'300px',width:'295px',marginLeft:'10px'}} >
       <CardActionArea>
         <CardMedia
           style={{height:'170px',width:'300px'}}

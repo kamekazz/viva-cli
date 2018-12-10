@@ -22,9 +22,10 @@ export default function Myplaylist(props) {
       }
       return trimmedStringTitle
     }
+
     return (
       <Zoom in={true} key={song._id} >
-        <Card className="card-serch-song" >
+        <Card className="card-serch-song">
           <img  className="card-serch-song-item1" src={song.imageUrl} alt={song.imageUrl}  />
           <CardContent  className="card-serch-song-item2" >
             <Typography component="h6" variant="h6">

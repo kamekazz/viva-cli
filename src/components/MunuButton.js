@@ -46,7 +46,7 @@ const ITEM_HEIGHT = 48;
                     Sign Up
                 </MenuItem>
                 </Link>
-                <Link style={{ textDecoration: 'none',color: '#E54B4B'}}  style={{ textDecoration: 'none',color: '#E54B4B'}} to="/signin">
+                <Link style={{ textDecoration: 'none',color: '#E54B4B'}}   to="/signin">
                 <MenuItem  style={{ textDecoration: 'none',color: '#E54B4B'}}  onClick={this.handleClose}>
                     Sign In
                 </MenuItem>

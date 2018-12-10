@@ -132,7 +132,6 @@ const API_URL = confing.apiUrl
         yourConfig
       )
       this.setState({songInlist: response.data.data})
-
     } catch (e) {
       console.log(e)
     }

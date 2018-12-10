@@ -21,14 +21,9 @@ class Signup2 extends Component {
   }
 
     onSubmit = () => {
-            this.props.history.push(`/guess/${this.props.match.params.id}`)
+            this.props.history.push(`/x/start/${this.props.match.params.id}`)
             console.log('singup done')
     }
-
-    // componentDidMount(){
-    //     this.singInguess()
-    // }
-
 
     singInguess = async ()=> {
       let params ={
@@ -37,6 +32,7 @@ class Signup2 extends Component {
         try {
           const response = await axios.post(
             `${API_URL}/api/accounts/new/guste`,params)
+            console.log(response.data)
             if (response.data.success) {
               localStorage.setItem('token', response.data.token)
               this.onSubmit()
@@ -68,7 +64,7 @@ class Signup2 extends Component {
                   onChange={(e) => this.setState({userName: e.target.value})}
                   margin="normal"
                 />
-              <Button onClick={this.onSubmit} variant="contained" color="secondary" >
+              <Button onClick={this.singInguess} variant="contained" color="secondary" >
                 Submit
               </Button>
             </form>
