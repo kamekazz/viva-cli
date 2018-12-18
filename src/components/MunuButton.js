@@ -36,6 +36,11 @@ const ITEM_HEIGHT = 48;
                     Sign Out
                 </MenuItem>
                 </Link>
+                <Link  style={{ textDecoration: 'none',color: '#E54B4B'}} to="/feature">
+                <MenuItem   style={{ textDecoration: 'none',color: '#E54B4B'}} onClick={this.handleClose}>
+                    Playlist
+                </MenuItem>
+                </Link>
                 </div>
             )
         } else {
