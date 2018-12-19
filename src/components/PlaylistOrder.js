@@ -37,7 +37,7 @@ export default function PlaylistOrder(props) {
         <TableBody>
           {props.playlistArry.map(row => {
             return (
-              <Slide direction="up" in={true} mountOnEnter unmountOnExit>
+              <Slide direction="up" key={row.id} in={true} mountOnEnter unmountOnExit>
               <TableRow key={row.id}>
                 <TableCell ><Link to={`/playlist/${row._id}/${row.name}`}  ><Button variant="contained" color="primary">Open</Button></Link></TableCell>
                 <TableCell component="th" scope="row">
@@ -60,11 +60,3 @@ export default function PlaylistOrder(props) {
 
 
 
-            // <div key={pl._id}>
-            //         <Link name={pl.name} to={`/playlist/${pl._id}/${pl.name}`}>
-            //             <p>NEME: {pl.name} </p>
-            //             <p>CREATED: {pl.created} </p>
-            //             <p>ID: {pl._id} </p>
-            //             <hr></hr>
-            //         </Link>
-            //     </div>

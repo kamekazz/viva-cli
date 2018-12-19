@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 
 const apiUrl = confing.apiUrl
@@ -64,6 +65,7 @@ class Feature extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault()
+    this.setState({addToPlaylist:''})
     if (this.state.playlistArry.length < 20) {
       this.onAdd(this.state.addToPlaylist)
     }else{
@@ -76,28 +78,34 @@ class Feature extends Component {
 
   
     return(
-        <div className="display-list" style={{padding:'10px',paddingBottom:'10px'}}>
-              <div className="playlist-h1" >
-              <Typography component="h2" variant="h1" color="secondary"  >
+        <div >
+          <Paper className={"display-list"} elevation={1} style={{padding:'5px'}}>
+              <div className="playlist-h1"  elevation={3} >
+              <Typography component="h2" variant="h1" color="secondary"  elevation={3}  >
                 Playlist
               </Typography>
               </div> 
-              <Paper  elevation={3} style={{maxWidth:'400px',marginBottom:'12px'}} >
-              <form onSubmit={this.onFormSubmit} style={{display: 'flex'}}>
-                <TextField  type="text"  style={{ flexGrow:'3'}} 
-                  label="add  Playlist here"
-                  value={this.state.addToPlaylist}
-                  onChange={(event)=> this.setState({addToPlaylist:event.target.value})}
-                  variant="outlined"
-                  color="secondary"
-                  />
-                <Button onClick={this.onFormSubmit} style={{ flexGrow:'1'}} variant="contained" color="secondary">
-                    Add
-                </Button>
-
+              <form onSubmit={this.onFormSubmit} style={{margin:'5px'}} >
+                <Grid container  direction="row"   justify="flex-start"  alignItems="center"  >
+                  <Grid item  xl={5} lg={6} md={8} sm={10} xs={10}>
+                    <TextField  type="text"  
+                      label="add  Playlist here"
+                      value={this.state.addToPlaylist}
+                      onChange={(event)=> this.setState({addToPlaylist:event.target.value})}
+                      variant="outlined"
+                      color="secondary"
+                      style={{backgroundColor:'white',width:'100%'}}
+                    />
+                  </Grid>
+                  <Grid item  xl={7} lg={6} md={4} sm={2}  xs={1}>
+                    <Button onClick={this.onFormSubmit} style={{height:'57px',marginLeft:'10px',marginRight:'3px'}} variant="contained" color="secondary">
+                        Add
+                    </Button>
+                  </Grid>
+                </Grid>
               </form>
-              </Paper>
-          <Paper  elevation={3}>
+            </Paper>
+          <Paper style={{marginTop:'12px'}}>
             <PlaylistOrder playlistArry={this.state.playlistArry}/>
           </Paper>
         </div>

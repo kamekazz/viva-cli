@@ -16,7 +16,8 @@ import ListPlayar from './components/guess/ListPlayar';
 import Signup2 from './components/guess/Signup2';
 import Start from './components/guess/Start';
 import './index.css'
-import Test from './components/Test';
+// import FloatingActionButtonZoom from './components/layout/Test';
+import Dashboard from './components/dashboard/Dashboard';
 
 
 
@@ -44,10 +45,10 @@ const theme = createMuiTheme({
         <BrowserRouter>
             <MuiThemeProvider theme={theme}>
                 <App>
-                    <Route path="/test" component={Test} />
+                    {/* <Route path="/test" component={FloatingActionButtonZoom} /> */}
                     <Route path="/" exact component={Signup} />
                     <Route path="/signup" component={Signup} />
-                    <Route path="/feature" component={Feature} />
+                    <Route path="/feature" component={Dashboard} />
                     <Route path="/signout" component={Signout} />
                     <Route path="/signin" component={Signin} />
                     <Route path="/playlist/:id/:name" component={PlayListPlayar} />

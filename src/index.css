@@ -72,8 +72,8 @@ html, body {
 
   .logo2{
     margin: 0;
-    width:40px;
-    height:40px;
+    width:23px;
+    height:23px;
     border:2px solid #E54B4B;
     border-top:2px solid #FDFFFC;
     border-radius:50%;
@@ -176,8 +176,13 @@ html, body {
 }
 
 .appBar{
-    margin-bottom: 4rem
+    margin-bottom: 64px;
 }
+
+.appBar2{
+    height: 64px;
+}
+
 
 .display-list{
     background:url("./components/css/hanny-naibaho-388579-unsplash.jpg") no-repeat center ;
@@ -186,6 +191,21 @@ html, body {
 
 .playlist-h1{
     position: relative;
-    
     top: 15px;
+    z-index: 1;
+ 
 }
+
+.feedback {
+    background-color : #5c5c5c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border-color: #46b8da;
+  }
+  
+  #mybutton {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+  }
