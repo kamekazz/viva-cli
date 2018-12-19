@@ -16,6 +16,7 @@ import ListPlayar from './components/guess/ListPlayar';
 import Signup2 from './components/guess/Signup2';
 import Start from './components/guess/Start';
 import './index.css'
+import Test from './components/Test';
 
 
 
@@ -43,6 +44,7 @@ const theme = createMuiTheme({
         <BrowserRouter>
             <MuiThemeProvider theme={theme}>
                 <App>
+                    <Route path="/test" component={Test} />
                     <Route path="/" exact component={Signup} />
                     <Route path="/signup" component={Signup} />
                     <Route path="/feature" component={Feature} />

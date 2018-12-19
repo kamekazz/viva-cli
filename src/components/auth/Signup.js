@@ -7,8 +7,11 @@ import * as actions from '../../actions';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import SpinerL from '../layout/SpinerL';
+
 
 class Signup extends Component {
 
@@ -35,7 +38,13 @@ class Signup extends Component {
 
         const spiner = () =>{
           if (this.state.progresive) {
-            return <CircularProgress  color="secondary" className="login-sing flex-container-nada" />
+            return(
+                <Grid  container  direction="row" justify="center" alignItems="center"  >
+                <Grid item xs={12} >
+                  <SpinerL />
+                </Grid>
+              </Grid>
+            )
           }
         }
     
