@@ -221,7 +221,7 @@ const API_URL = confing.apiUrl
 
     const styles ={
       root: {
-        flexGrow: 1,
+        // flexGrow: 1,
         // backgroundColor: theme.palette.background.paper,
       }
     }
@@ -265,7 +265,6 @@ const API_URL = confing.apiUrl
       <div style={styles.root}>
    
       <Grid container >
-
         <Grid item xs={12} sm={6} md={5} xl={4}>
           <AppBar position="static">
             <Tabs value={value}  onChange={this.handleChange} fullWidth >
@@ -298,10 +297,7 @@ const API_URL = confing.apiUrl
             </Hidden>
             </div>
           </div>
-
-    
         </Grid>
-      
       </Grid>
       </div>
     );

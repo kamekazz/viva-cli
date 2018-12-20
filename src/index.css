@@ -176,11 +176,11 @@ html, body {
 }
 
 .appBar{
-    margin-bottom: 64px;
+    margin-bottom: 55px;
 }
 
 .appBar2{
-    height: 64px;
+    /* height: 64px; */
 }
 
 

@@ -30,7 +30,7 @@ export class PlayButton extends Component {
             } else {
                 return(
                     <Button onClick={startPlay}   variant="outlined" color="secondary" >
-                        Start Play
+                        start playing
                     </Button>
                 )
             }

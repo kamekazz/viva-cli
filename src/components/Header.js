@@ -126,14 +126,13 @@ class Header extends Component {
     const styles = {
       root: {
         flexGrow: 1,
-        
       },
       grow: {
         flexGrow: 1,
       },
       menuButton: {
-        marginLeft: -12,
-        marginRight: 20,
+        // marginLeft: -12,
+        // marginRight: 20,
       },
     };
 
