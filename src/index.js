@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
@@ -10,7 +10,6 @@ import reducers from './reducers';
 import Signup from './components/auth/Signup';
 import Signout from './components/auth/Signout';
 import Signin from './components/auth/Signin';
-import Feature from './components/Feature';
 import PlayListPlayar from './components/playar/PlayListPlayar';
 import ListPlayar from './components/guess/ListPlayar';
 import Signup2 from './components/guess/Signup2';
@@ -18,7 +17,7 @@ import Start from './components/guess/Start';
 import './index.css'
 // import FloatingActionButtonZoom from './components/layout/Test';
 import Dashboard from './components/dashboard/Dashboard';
-
+import history from './history';
 
 
 const store = createStore(
@@ -42,9 +41,10 @@ const theme = createMuiTheme({
   
   ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <Router  history={history}>
             <MuiThemeProvider theme={theme}>
                 <App>
+                <Switch>
                     {/* <Route path="/test" component={FloatingActionButtonZoom} /> */}
                     <Route path="/" exact component={Signup} />
                     <Route path="/signup" component={Signup} />
@@ -55,9 +55,10 @@ const theme = createMuiTheme({
                     <Route path="/x/start/:id"  component={Start} />
                     <Route path="/x/signin/:id"  component={Signup2} />
                     <Route path="/guess/:id" component={ListPlayar} />
+                </Switch>
                 </App>
             </MuiThemeProvider>
-        </BrowserRouter>
+        </Router>
     </Provider>
    , document.querySelector('#root')
   );

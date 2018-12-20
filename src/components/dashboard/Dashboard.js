@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -51,6 +51,10 @@ class Dashboard  extends Component {
   handleChangeIndex = index => {
     this.setState({ value: index });
   };
+
+  gotoPlayr =()=>{
+    this.props.history.push('/signin');
+  }
 
   render() {
     const { classes, theme } = this.props;
