@@ -30,7 +30,7 @@ import Typography from '@material-ui/core/Typography';
     const gif = this.props.gif
 
     return (
-      <Card style={{height:'300px',width:'295px',marginLeft:'10px'}} >
+      <Card style={{height:'300px',width:'295px'}} >
       <CardActionArea>
         <CardMedia
           style={{height:'170px',width:'300px'}}

@@ -19,6 +19,7 @@ import Grid from '@material-ui/core/Grid';
 import QrCode from './QrCode';
 import Hidden from '@material-ui/core/Hidden';
 import  PlayButton  from './PlayButton';
+import DoneSongs from './DoneSongs';
 
 
 
@@ -290,10 +291,18 @@ const API_URL = confing.apiUrl
             </div>
             <div style={{flexGrow:'1',padding:'20px'}}>
             <Hidden xsDown >
-              <div style={{display: 'flex',flexWrap:'wrap',alignItems:'flex-start'}}>
-                <MetaData style={{flexGrow: '1'}} gifId={this.props.match.params.name} songInlist={this.state.songInlist}  ></MetaData> 
-                <QrCode style={{flexGrow: '1'}} playListId={this.state.playListId} />
-              </div>   
+              <Grid container  spacing={8} >
+                <Grid item >
+                  <MetaData gifId={this.props.match.params.name} songInlist={this.state.songInlist}  ></MetaData> 
+                </Grid>
+                <Grid item >
+                  <QrCode  playListId={this.state.playListId} />
+                </Grid>
+                <Grid item >
+                  <DoneSongs  />
+                
+                </Grid>
+              </Grid>
             </Hidden>
             </div>
           </div>

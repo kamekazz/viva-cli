@@ -197,7 +197,7 @@ html, body {
 }
 
 .feedback {
-    background-color : #5e566349;
+    background-color : #ffffff;
     color: white;
     padding: 10px 20px;
     border-radius: 4px;
@@ -211,7 +211,27 @@ html, body {
   
   }
 
+#history{
+    background-color: #b82626d5;
+}
+#historyText{
+    color: #f3f3f3;
+}
 
+#history:hover{
+    background-color: #b42c2c83;
+}
+#historyText:hover{
+  color: #333333;
+}
+
+
+.historyline{
+    margin: -10;
+    background-color: rgba(229, 75, 75, 0.26);
+    border-radius: 25px;
+    
+}
   /* PlaylistOrder */
 
 
