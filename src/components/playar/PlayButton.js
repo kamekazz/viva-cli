@@ -2,42 +2,29 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import FastForwardIcon from '@material-ui/icons/FastForward';
 
 export class PlayButton extends Component {
 
 
   render() {
 
-    const {startPlay,songInlist} = this.props
-    console.log(songInlist.length)
-    const rdHowPaying = ()=>{
-        if (this.props.howPaying) {
-            return(
-                <Button  onClick={startPlay} variant="outlined" color="secondary" >
-                    next
-                </Button>
-            )
-        } else {
-            return(
-                <Button onClick={startPlay}   variant="outlined" color="secondary" >
-                    Start Play
-                </Button>
-            )
-        }
-    }
+    const {startPlay,songInlist,addMoreSong} = this.props
+
 
     const rdResetButton =()=>{
         if (songInlist.length === 0) {
             return(
-                <Button  variant="outlined" color="secondary" >
-                    reset
+                <Button onClick={addMoreSong} variant="outlined" color="secondary" >
+                    Add More songs <AddIcon style={{marginLeft:'5px'}} />
                 </Button>
             )
         } else {
             if (this.props.howPaying) {
                 return(
                     <Button  onClick={startPlay} variant="outlined" color="secondary" >
-                        next
+                        next <FastForwardIcon  style={{marginLeft:'5px'}} />
                     </Button>
                 )
             } else {

@@ -1,28 +1,22 @@
 import React, { Component } from 'react'
 import confing from '../../confing'
-
 import _ from 'lodash'
 import SearchBar from '../playar/SearchBar';
 import VideoDetail from '../playar/VideoDetail'
 import VideoList from './VideoList'
 import Myplaylist from './Myplaylist'
 import MetaData from './MetaData'
-
 import axios from 'axios';
 import requireAuth from '../requireAuth';
-
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import PhoneIcon from '@material-ui/icons/Search';
 import FavoriteIcon from '@material-ui/icons/PlayArrow';
 import PersonPinIcon from '@material-ui/icons/Settings';
-import Button from '@material-ui/core/Button';
 import Opciones from './Opciones';
-
 import Grid from '@material-ui/core/Grid';
 import QrCode from './QrCode';
-
 import Hidden from '@material-ui/core/Hidden';
 import  PlayButton  from './PlayButton';
 
@@ -119,6 +113,10 @@ const API_URL = confing.apiUrl
     } catch (e) {
       console.log(e)
     }
+  }
+
+  addMoreSong = () =>{
+    this.setState({value:0})
   }
 
   getMyList = async ()=> {
@@ -241,7 +239,7 @@ const API_URL = confing.apiUrl
       return(
         <div>
           <div className="playcomnetn-button">
-                  <PlayButton songInlist={this.state.songInlist}  startPlay={this.startPlay} />
+                  <PlayButton  addMoreSong={this.addMoreSong} songInlist={this.state.songInlist}  startPlay={this.startPlay} />
           <samp className="playcomnetn-button-item" ></samp>
           <Opciones className="playcomnetn-button-item"  playListId={this.state.playListId}></Opciones> 
           </div> 

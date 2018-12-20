@@ -14,7 +14,7 @@ import MusicNote from '@material-ui/icons/MusicNote';
 import MusicOff from '@material-ui/icons/MusicOff';
 import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+
 
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
@@ -75,6 +75,10 @@ class PlaylistOrder extends Component {
 
   gotoPlayr =(id,name,e)=>{
     history.push(`/playlist/${id}/${name}`)
+
+    console.log(id);
+    console.log(name);
+    console.log(e);
   }
 
 
@@ -94,7 +98,6 @@ class PlaylistOrder extends Component {
 
   
   const { classes ,playlistArry} = this.props;
-  console.log(playlistArry)
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -112,7 +115,7 @@ class PlaylistOrder extends Component {
             let contG = row.guests.length
             let nowPlaying = row.nowPlaying.length
             return (
-              <TableRow   className={classes.row} key={row._id} onClick={(e)=>this.gotoPlayr(row.id,row.name)}  >
+              <TableRow   className={classes.row} key={row._id} onClick={(e)=>this.gotoPlayr(row._id,row.name,e)}  >
                 
                 <CustomTableCell component="th" scope="row">
                   {tamanoNormal(row.name,8)}
