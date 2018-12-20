@@ -31,7 +31,6 @@ export default function Myplaylist(props) {
             <Typography component="h6" variant="h6">
             {tamanoNormal(song.title,35)}
             </Typography>
-
           </CardContent>
           <div  className="card-serch-song-item3" >
           <div  className="card-serch-in-bootoncolome" >
@@ -45,7 +44,6 @@ export default function Myplaylist(props) {
             <KeyboardArrowDown />
           </Button >
           </div>
-
         </div>
         </Card>
         </Zoom>

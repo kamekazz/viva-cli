@@ -24,6 +24,7 @@ import Grid from '@material-ui/core/Grid';
 import QrCode from './QrCode';
 
 import Hidden from '@material-ui/core/Hidden';
+import  PlayButton  from './PlayButton';
 
 
 
@@ -240,9 +241,7 @@ const API_URL = confing.apiUrl
       return(
         <div>
           <div className="playcomnetn-button">
-          <Button  className="playcomnetn-button-item"  onClick={this.startPlay} variant="outlined" color="secondary" >
-                  Start Play
-          </Button>
+                  <PlayButton songInlist={this.state.songInlist}  startPlay={this.startPlay} />
           <samp className="playcomnetn-button-item" ></samp>
           <Opciones className="playcomnetn-button-item"  playListId={this.state.playListId}></Opciones> 
           </div> 
