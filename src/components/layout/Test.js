@@ -128,7 +128,6 @@ class FloatingActionButtonZoom  extends Component {
               {fab.icon}
             </Fab>
           </Zoom>
-          
         ))}
         </div>
       </div>

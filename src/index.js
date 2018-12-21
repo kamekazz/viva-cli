@@ -46,7 +46,7 @@ const theme = createMuiTheme({
                 <App>
                 <Switch>
                     {/* <Route path="/test" component={FloatingActionButtonZoom} /> */}
-                    <Route path="/" exact component={Signup} />
+                    <Route path="/" exact component={Dashboard} />
                     <Route path="/signup" component={Signup} />
                     <Route path="/feature" component={Dashboard} />
                     <Route path="/signout" component={Signout} />

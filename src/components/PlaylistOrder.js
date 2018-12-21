@@ -17,8 +17,8 @@ import Button from '@material-ui/core/Button';
 
 
 import Badge from '@material-ui/core/Badge';
-import IconButton from '@material-ui/core/IconButton';
 import history from '../history';
+import Divider from '@material-ui/core/Divider';
 
 
 const CustomTableCell = withStyles(theme => ({
@@ -99,6 +99,7 @@ class PlaylistOrder extends Component {
   
   const { classes ,playlistArry} = this.props;
   return (
+    
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
@@ -115,17 +116,17 @@ class PlaylistOrder extends Component {
             let contG = row.guests.length
             let nowPlaying = row.nowPlaying.length
             return (
+              
               <TableRow   className={classes.row} key={row._id} onClick={(e)=>this.gotoPlayr(row._id,row.name,e)}  >
-                
                 <CustomTableCell component="th" scope="row">
                   {tamanoNormal(row.name,8)}
                 </CustomTableCell>
                 <CustomTableCell >
-                  <IconButton aria-label="4 pending messages" className={classes.margin}>
+ 
                     <Badge badgeContent={contG} color="primary">
                       <PeopleIcon />
                     </Badge>
-                  </IconButton>
+      
                 </CustomTableCell>
                 <CustomTableCell >{row.live ? 
                   <WifiTethering style={{color:'green'}} />
@@ -145,14 +146,13 @@ class PlaylistOrder extends Component {
                     <EditIcon />
                 </Button>
                 </CustomTableCell>
-                
               </TableRow>
-            
             );
           })}
         </TableBody>
       </Table>
     </Paper>
+   
   );
 }
 }
