@@ -65,6 +65,8 @@ class Signin extends Component {
               value={this.state.password}
               onChange={(e) => this.setState({password: e.target.value})}
               margin="normal"
+              type="password"
+              autoComplete="current-password"
             />
           <Button onClick={this.onSubmit} variant="contained" color="secondary" >
             Submit

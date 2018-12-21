@@ -34,6 +34,7 @@ const API_URL = confing.apiUrl
   state={
     playListId:'',
     songInlist:[],
+    songsDone:[],
     videos:[],
     value: 1,
     selectedVideo: null
@@ -45,6 +46,7 @@ const API_URL = confing.apiUrl
     this.setState({playListId:this.props.match.params.id})
     this.trigger()
     this.getMyList()
+    this.getMyDoneList()
   }
 
   videoSearch=(term)=>{
@@ -137,27 +139,45 @@ const API_URL = confing.apiUrl
     }
   }
 
-  startPlay = () =>{
-    this.props.liveSong(this.state.songInlist[0])
-    this.setState({
-      selectedVideo: this.state.songInlist
-    })
-    this.removeSong()
-
-  }
-
-  removeSong = async ()=> {
-    const testRemove = this.state.songInlist[0]
+  getMyDoneList = async ()=> {
     let yourConfig = {
       headers: {
         Authorization:  localStorage.getItem('token')
       }
     }
     try {
-      const response = await axios.delete(
-        `${API_URL}/api/song/delete/${testRemove._id}`,
+      const response = await axios.get(
+        `${API_URL}/api/playlist/donesongs/${this.props.match.params.id}`,
         yourConfig
       )
+      this.setState({songsDone: response.data.data})
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  startPlay = () =>{
+    this.props.liveSong(this.state.songInlist[0])
+    this.setState({
+      selectedVideo: this.state.songInlist
+    })
+    this.doneSong()
+    this.getMyDoneList()
+  }
+
+  doneSong = async ()=> {
+    const testRemove = this.state.songInlist[0]
+    let yourConfig = {
+      headers: {
+        authorization:  localStorage.getItem('token')
+      }
+    }
+    try {
+      const response = await axios.post(
+        `${API_URL}/api/song/done/${testRemove._id}`,
+        yourConfig
+      )
+
       if (response.data.success) {
         this.newMassages('Next Song',true)
       } else{
@@ -255,6 +275,7 @@ const API_URL = confing.apiUrl
         <div>
           <Opciones playListId={this.state.playListId}></Opciones>
           <QrCode playListId={this.state.playListId} />
+          <DoneSongs songsDone={this.state.songsDone}  />
         </div>
       )
     }
@@ -299,8 +320,7 @@ const API_URL = confing.apiUrl
                   <QrCode  playListId={this.state.playListId} />
                 </Grid>
                 <Grid item >
-                  <DoneSongs  />
-                
+                  <DoneSongs songsDone={this.state.songsDone}  />
                 </Grid>
               </Grid>
             </Hidden>

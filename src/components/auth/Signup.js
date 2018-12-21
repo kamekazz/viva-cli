@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import SpinerL from '../layout/SpinerL';
+import history from '../../history';
 
 
 class Signup extends Component {
@@ -29,7 +30,7 @@ class Signup extends Component {
         }
         this.setState({progresive:true})
         this.props.signup(formProps, () => {
-          this.props.history.push('/feature')
+          history.push('/feature')
           this.setState({progresive:false})
         });
       };
@@ -69,6 +70,8 @@ class Signup extends Component {
                   value={this.state.password}
                   onChange={(e) => this.setState({password: e.target.value})}
                   margin="normal"
+                  type="password"
+                  autoComplete="current-password"
                 />
           
               <div>{this.props.errorMessage}</div>

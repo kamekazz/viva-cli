@@ -45,6 +45,7 @@ class CheckboxList extends React.Component {
   };
 
   render() {
+
       const rdHeder =()=>{
         return(
             <div >
@@ -57,18 +58,17 @@ class CheckboxList extends React.Component {
         )
       }
 
-    const { classes } = this.props;
+    const { classes ,songsDone} = this.props;
 
     return (  
     <Paper   style={{height:'300px',width:'100%'}}>
         {rdHeder()}
       <List className={classes.root}>
-        {[0, 1, 2,3,4].map(value => (
-          <ListItem key={value} role={undefined} dense button onClick={this.handleToggle(value)}>
-
+        {songsDone.map(song => (
+          <ListItem key={song._id} role={undefined} dense button onClick={this.handleToggle(song._id)}>
             <MusicNote />
 
-            <ListItemText primary={`Line item song`} />
+            <ListItemText primary={song.title} />
 
             <div className="historyline">
               <IconButton aria-label="Comments">

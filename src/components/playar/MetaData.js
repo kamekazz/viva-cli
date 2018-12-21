@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
  class MetaData extends Component {
 
   componentDidMount(){
-    this.props.aGetGif(this.props.gifId)
+    this.props.aGetGif('music')
   }
 
 
