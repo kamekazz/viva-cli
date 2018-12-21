@@ -14,11 +14,13 @@ import MusicNote from '@material-ui/icons/MusicNote';
 import MusicOff from '@material-ui/icons/MusicOff';
 import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
-
-
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Badge from '@material-ui/core/Badge';
 import history from '../history';
 import Divider from '@material-ui/core/Divider';
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 
 
 const CustomTableCell = withStyles(theme => ({
@@ -114,9 +116,8 @@ class PlaylistOrder extends Component {
         <TableBody>
           {playlistArry.map(row => {
             let contG = row.guests.length
-            let nowPlaying = row.nowPlaying.length
+            let nowPlaying = row.videoId.length
             return (
-              
               <TableRow   className={classes.row} key={row._id} onClick={(e)=>this.gotoPlayr(row._id,row.name,e)}  >
                 <CustomTableCell component="th" scope="row">
                   {tamanoNormal(row.name,8)}
@@ -142,11 +143,19 @@ class PlaylistOrder extends Component {
                   }
                 </CustomTableCell>
                 <CustomTableCell >
-                <Button size="small" variant="outlined" style={{backgroundColor:'#5e566373'}} >
+
+                <div onClick={(e)=> e.stopPropagation()} className="playOline">
+
+                <IconButton  onClick={(e)=>this.props.acDialog('a','a','a',true)} variant="outlined" style={{backgroundColor:'#5e566373'}} >
                     <EditIcon />
-                </Button>
+                </IconButton >
+
+                <IconButton  onClick={(e)=>this.props.acDialog('a','a','a',true)}   color="secondary" variant="outlined" style={{backgroundColor:'#5e566373'}} >
+                    <DeleteIcon />
+                </IconButton >
+                </div>
                 </CustomTableCell>
-              </TableRow>
+              </TableRow > 
             );
           })}
         </TableBody>
@@ -160,8 +169,14 @@ PlaylistOrder.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PlaylistOrder);
+const mapStateToProps = (state) => ({
+  
+})
 
+
+
+
+export default connect(mapStateToProps, actions)(withStyles(styles)(PlaylistOrder));
 
 
 // to={`/playlist/${row._id}/${row.name}`}

@@ -13,6 +13,9 @@ export const GET_PLAYLIST = 'get_playlist';
 export const FLASH_MESSAGES = 'flash_messages'
 export const GIF = 'GIF'
 
+export const Dialog = 'Dialog'
+export const DialogColest = 'Dialog'
+
 
 
 

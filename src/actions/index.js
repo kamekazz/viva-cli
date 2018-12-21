@@ -1,6 +1,6 @@
 import axios from 'axios';
 import confing from '../confing'
-import { AUTH_USER, AUTH_ERROR,AUTH_USER_INFO, LIVE_SONG,FLASH_MESSAGES,GIF} from './types';
+import { AUTH_USER, AUTH_ERROR,AUTH_USER_INFO, LIVE_SONG,FLASH_MESSAGES,GIF,DialogColest,Dialog} from './types';
 
 
 
@@ -91,7 +91,6 @@ export const newMassages = (text,type) => {
     type: FLASH_MESSAGES,
     payload: payload
   };
-  
 }
 
 export const  aGetGif = (playList) => async dispatch => {
@@ -104,6 +103,29 @@ export const  aGetGif = (playList) => async dispatch => {
     console.log(e)
   }
 }
+
+export const acDialog = (heder,text,modulo,type) => {
+  let payload = {
+    heder:heder,
+    text:text,
+    modulo:modulo,
+    type:type,
+  }
+  if (type) {
+    return {
+        type: Dialog,
+        payload: payload
+    };
+  } else {
+    return {
+      type: DialogColest
+    }
+  }
+
+  
+}
+
+
 
 
 

@@ -179,9 +179,9 @@ html, body {
     margin-bottom: 55px;
 }
 
-.appBar2{
-    /* height: 64px; */
-}
+/* .appBar2{
+    height: 64px;
+} */
 
 
 .display-list{
@@ -229,8 +229,16 @@ html, body {
 .historyline{
     margin: -10;
     background-color: rgba(229, 75, 75, 0.26);
-    border-radius: 25px;
-    
+    border-radius: 25px;  
+}
+
+.playOline{
+    width: 97px;
+    background-color: rgba(229, 75, 75, 0.096);
+    border-radius: 25px;  
+}
+.playOline:hover{
+    background-color: rgba(243, 65, 234, 0.527);
 }
   /* PlaylistOrder */
 
