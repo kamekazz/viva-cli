@@ -17,17 +17,12 @@ class DraggableDialog extends React.Component {
   
  
 
-  handleClickOpen = () => {
-
-   
-  };
 
   handleClose = () => {
     let a =''
     let s =''
     let d =''
     this.props.acDialog(a,s,d,false)
-    console.log('good');
   };
 
   render() {
@@ -40,12 +35,13 @@ class DraggableDialog extends React.Component {
         
       }
     }
+
+    if (!this.props.dialog) {
+      return <div></div>
+    }
     
     return (
       <div>
-        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          Slide in alert dialog
-        </Button>
         <Dialog
           open={hpIfor()}
           TransitionComponent={Transition}
@@ -55,21 +51,18 @@ class DraggableDialog extends React.Component {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle id="alert-dialog-slide-title">
-            {"Use Google's location service?"}
+            {this.props.dialog.heder}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
+            {this.props.dialog.text}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose}  color="primary">
               Disagree
             </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Agree
-            </Button>
+            {this.props.dialog.modulo}
           </DialogActions>
         </Dialog>
       </div>

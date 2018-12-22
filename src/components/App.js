@@ -7,10 +7,10 @@ import DraggableDialog from './layout/DraggableDialog';
 export default ({ children }) => {
   return (
     <div>
-        <DraggableDialog />
         <FlashMessagesList />
         <Header></Header>
         {children}
+        <DraggableDialog />
     </div>
   );
 };

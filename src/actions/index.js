@@ -121,11 +121,49 @@ export const acDialog = (heder,text,modulo,type) => {
       type: DialogColest
     }
   }
-
-  
 }
 
+export const acDeletyPlaylist = (id) => async dispatch => {
+  let yourConfig = {
+    headers: {
+      Authorization:  localStorage.getItem('token')
+    }
+  }
+  try {
+    const response = await axios.delete(
+      `${apiUrl}/api/playlist/delete/${id}`,
+      yourConfig
+    )
+    if (response.data.success) {
+      dispatch(newMassages(response.data.message,response.data.success))
+    }else{
+      dispatch(newMassages(response.data.message,response.data.success))
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
 
+// router.delete('/delete/:id', checkJwt, (req,res,next) =>{
+//   let playlistID = req.params.id
+//   let msdId = req.decoded.user._id
+
+//   Playlist.findOne({_id: playlistID  },(err, fandplaylist)=>{
+//       if (err) return next(err);
+//       if (fandplaylist.ownerId === msdId) {
+//           fandplaylist.remove()
+//           res.json({
+//               success:true,
+//               message:'delete'
+//           })
+//       } else {
+//           res.json({
+//               success:false,
+//               message:'not owner'
+//           })
+//       }
+//   })
+// })
 
 
 

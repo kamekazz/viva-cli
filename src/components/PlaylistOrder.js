@@ -13,14 +13,15 @@ import PortableWifiOff from '@material-ui/icons/PortableWifiOff';
 import MusicNote from '@material-ui/icons/MusicNote';
 import MusicOff from '@material-ui/icons/MusicOff';
 import EditIcon from '@material-ui/icons/Edit';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Badge from '@material-ui/core/Badge';
 import history from '../history';
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import { connect } from 'react-redux'
 import * as actions from '../actions'
+import Button from '@material-ui/core/Button';
 
 
 const CustomTableCell = withStyles(theme => ({
@@ -77,15 +78,23 @@ class PlaylistOrder extends Component {
 
   gotoPlayr =(id,name,e)=>{
     history.push(`/playlist/${id}/${name}`)
-
-    console.log(id);
-    console.log(name);
-    console.log(e);
   }
+
+  deletelist = async (id)=>{
+    await this.props.acDeletyPlaylist(id)
+    await this.props.getPlaylist()
+    this.props.acDialog(false)
+  }
+  
 
 
 
   render() {
+    if (!this.props.playlistArry) {
+      return <div></div>
+    }
+
+
   const tamanoNormal = (title,length) =>{
     let trimmedStringTitle = title.substring(0, length)
     if (title.length > length ) {
@@ -95,6 +104,14 @@ class PlaylistOrder extends Component {
       
     }
     return trimmedStringTitle
+  }
+
+  const rdactivetiButton =(id)=>{
+    return(
+    <Button onClick={()=>this.deletelist(id)} color="secondary">
+              delete
+    </Button>
+    )
   }
 
 
@@ -146,11 +163,11 @@ class PlaylistOrder extends Component {
 
                 <div onClick={(e)=> e.stopPropagation()} className="playOline">
 
-                <IconButton  onClick={(e)=>this.props.acDialog('a','a','a',true)} variant="outlined" style={{backgroundColor:'#5e566373'}} >
+                <IconButton  onClick={()=>this.props.acDialog('currently not available?','','',true)} variant="outlined" style={{backgroundColor:'#5e566373'}} >
                     <EditIcon />
                 </IconButton >
 
-                <IconButton  onClick={(e)=>this.props.acDialog('a','a','a',true)}   color="secondary" variant="outlined" style={{backgroundColor:'#5e566373'}} >
+                <IconButton  onClick={()=>this.props.acDialog('are you sure you want to delete the playlist?','if you continue with the process you will not be able to retrieve your playlist',rdactivetiButton(row._id),true)}   color="secondary" variant="outlined" style={{backgroundColor:'#5e566373'}} >
                     <DeleteIcon />
                 </IconButton >
                 </div>

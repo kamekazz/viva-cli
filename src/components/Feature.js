@@ -106,7 +106,7 @@ class Feature extends Component {
               </form>
             </Paper>
           <Paper style={{marginTop:'12px'}}>
-            <PlaylistOrder playlistArry={this.state.playlistArry}/>
+            <PlaylistOrder getPlaylist={this.getPlaylist} playlistArry={this.state.playlistArry}/>
           </Paper>
         </div>
     )
