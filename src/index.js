@@ -18,7 +18,7 @@ import './index.css'
 // import FloatingActionButtonZoom from './components/layout/Test';
 import Dashboard from './components/dashboard/Dashboard';
 import history from './history';
-
+import * as serviceWorker from './serviceWorker';
 
 const store = createStore(
     reducers,
@@ -62,3 +62,5 @@ const theme = createMuiTheme({
     </Provider>
    , document.querySelector('#root')
   );
+
+  serviceWorker.unregister();

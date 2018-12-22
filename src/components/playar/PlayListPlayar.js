@@ -283,13 +283,15 @@ const API_URL = confing.apiUrl
     }
 
 
+
+
     
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 1000)
     return (
       <div style={styles.root}>
    
       <Grid container >
-        <Grid item xs={12} sm={6} md={5} xl={4}>
+        <Grid item xs={12} sm={12} md={6} xl={3}>
         <div style={{marginBottom:20}}></div>
           <AppBar position="static">
             <Tabs value={value}  onChange={this.handleChange} fullWidth >
@@ -303,7 +305,7 @@ const API_URL = confing.apiUrl
           {value === 2 &&  renderSetiteng()  }
         </Grid>
 
-        <Grid item xs={12} sm={6}  md={7} xl={8}>
+        <Grid item xs={12} sm={6}  md={6} xl={9}>
           <div style={{display:'flex',flexDirection:'column'}}>
             <div style={{flexGrow:'1'}}>
             {this.state.selectedVideo && 

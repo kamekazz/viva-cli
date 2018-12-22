@@ -40,7 +40,20 @@ class CheckboxList extends React.Component {
     });
   };
 
+  
+
   render() {
+
+    const hpTamanoNormal = (title,length) =>{
+      let trimmedStringTitle = title.substring(0, length)
+      if (title.length > length ) {
+        trimmedStringTitle = trimmedStringTitle + '..'
+      }
+      if (title.length < length) {
+        
+      }
+      return trimmedStringTitle
+    }
 
   const { classes ,songsDone} = this.props;
   
@@ -69,7 +82,7 @@ class CheckboxList extends React.Component {
           <ListItem key={song._id} role={undefined} dense button onClick={this.handleToggle(song._id)}>
             <MusicNote />
 
-            <ListItemText primary={song.title} />
+            <ListItemText primary={hpTamanoNormal(song.title,29)} />
 
             <div className="historyline">
               <IconButton aria-label="Comments">
