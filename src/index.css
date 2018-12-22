@@ -157,6 +157,7 @@ html, body {
 
 .login-sing{
     width: 350px;
+   
 }
 
 
@@ -193,7 +194,6 @@ html, body {
     position: relative;
     top: 15px;
     z-index: 1;
- 
 }
 
 .feedback {

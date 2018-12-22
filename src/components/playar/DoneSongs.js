@@ -42,6 +42,13 @@ class CheckboxList extends React.Component {
 
   render() {
 
+  const { classes ,songsDone} = this.props;
+  
+    if(songsDone.length === 0){
+      return <div></div>
+    }
+    
+
       const rdHeder =()=>{
         return(
             <div >
@@ -53,8 +60,6 @@ class CheckboxList extends React.Component {
             </div> 
         )
       }
-
-    const { classes ,songsDone} = this.props;
 
     return (  
     <Paper   style={{height:'300px',width:'100%'}}>

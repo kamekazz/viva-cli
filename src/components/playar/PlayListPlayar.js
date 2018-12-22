@@ -23,6 +23,8 @@ import DoneSongs from './DoneSongs';
 
 
 
+
+
 const API_KEY = confing.API_KEY
 const API_URL = confing.apiUrl
 
@@ -260,7 +262,7 @@ const API_URL = confing.apiUrl
       return(
         <div>
           <div className="playcomnetn-button">
-                  <PlayButton  addMoreSong={this.addMoreSong} songInlist={this.state.songInlist}  startPlay={this.startPlay} />
+          <PlayButton  addMoreSong={this.addMoreSong} songInlist={this.state.songInlist}  startPlay={this.startPlay} />
           <samp className="playcomnetn-button-item" ></samp>
           <Opciones className="playcomnetn-button-item"  playListId={this.state.playListId}></Opciones> 
           </div> 
@@ -288,6 +290,7 @@ const API_URL = confing.apiUrl
    
       <Grid container >
         <Grid item xs={12} sm={6} md={5} xl={4}>
+        <div style={{marginBottom:20}}></div>
           <AppBar position="static">
             <Tabs value={value}  onChange={this.handleChange} fullWidth >
               <Tab icon={<PhoneIcon />} />

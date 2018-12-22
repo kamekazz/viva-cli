@@ -33,9 +33,11 @@ TabContainer.propTypes = {
 const styles = theme => ({
   root: {
     backgroundColor: '#5c5c5c',
-    // width: 500,
+    maxWidth: 750,
+    zIndex: 0,
     position: 'relative',
     minHeight: '900px',
+    marginTop: 18,
   }
 });
 

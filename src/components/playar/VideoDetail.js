@@ -32,6 +32,7 @@ export default class VideoDetail extends Component {
 
     return (
       <div >
+      <div style={{marginBottom:20}}></div>
       <YouTube
         videoId={videoId}
         opts={opts}
