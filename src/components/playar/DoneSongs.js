@@ -9,17 +9,30 @@ import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MusicNote from '@material-ui/icons/MusicNote';
-import MusicOff from '@material-ui/icons/MusicOff';
+import MusicOff from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
 import Flag from '@material-ui/icons/Flag';
 import Favorite from '@material-ui/icons/Favorite';
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
+import axios from 'axios';
+import confing from '../../confing'
+const API_KEY = confing.API_KEY
+const API_URL = confing.apiUrl
+
+
 
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
+    position: 'relative',
+    overflow: 'auto',
+    height: 227,
   },
 });
 
 class CheckboxList extends React.Component {
+  newMassages = this.props.newMassages
   state = {
     checked: [0],
   };
@@ -40,9 +53,39 @@ class CheckboxList extends React.Component {
     });
   };
 
+  deleteSong = async (id)=> {
+    let yourConfig = {
+      headers: {
+        authorization:  localStorage.getItem('token')
+      }
+    }
+    try {
+      const response = await axios.delete(
+        `${API_URL}/api/song/delete/${id}`,
+        yourConfig
+      )
+      if (response.data.success) {
+        this.newMassages(' Song delete',true)
+      } else{
+        this.newMassages(response.data.message,false)
+      }
+      this.props.getMyDoneList()
+      this.props.acDialog()
+    } catch (e) {
+      console.log(e)
+    }
+  }
   
 
   render() {
+
+    const rdactivetiButton =(id)=>{
+      return(
+      <Button onClick={()=>this.deleteSong(id)} color="secondary">
+                delete
+      </Button>
+      )
+    }
 
     const hpTamanoNormal = (title,length) =>{
       let trimmedStringTitle = title.substring(0, length)
@@ -77,23 +120,23 @@ class CheckboxList extends React.Component {
     return (  
     <Paper   style={{height:'300px',width:'100%'}}>
         {rdHeder()}
-      <List className={classes.root}>
+      <List className={classes.root}  subheader={<ListItem />} >
         {songsDone.map(song => (
           <ListItem key={song._id} role={undefined} dense button onClick={this.handleToggle(song._id)}>
             <MusicNote />
 
-            <ListItemText primary={hpTamanoNormal(song.title,29)} />
+            <ListItemText primary={hpTamanoNormal(song.title,25)} />
 
             <div className="historyline">
-              <IconButton aria-label="Comments">
+              <IconButton  onClick={()=>this.props.acDialog('currently not available?','','',true)} aria-label="Comments">
                 <Favorite />
               </IconButton>
     
-              <IconButton aria-label="Comments">
+              <IconButton  onClick={()=>this.props.acDialog('are you sure you want to delete the song from the playlist??',rdactivetiButton(song._id),'',true)} aria-label="Comments">
                 <MusicOff />
               </IconButton>
      
-              <IconButton aria-label="Comments">
+              <IconButton  onClick={()=>this.props.acDialog('currently not available?','','',true)} aria-label="Comments">
                 <Flag />
               </IconButton>
             </div> 
@@ -109,7 +152,7 @@ CheckboxList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CheckboxList);
 
+export default connect(null, actions)(withStyles(styles)(CheckboxList));
 
 

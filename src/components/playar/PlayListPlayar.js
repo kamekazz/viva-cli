@@ -277,7 +277,7 @@ const API_URL = confing.apiUrl
         <div>
           <Opciones playListId={this.state.playListId}></Opciones>
           <QrCode playListId={this.state.playListId} />
-          <DoneSongs songsDone={this.state.songsDone}  />
+          <DoneSongs getMyDoneList={this.getMyDoneList} songsDone={this.state.songsDone}  />
         </div>
       )
     }
@@ -305,7 +305,7 @@ const API_URL = confing.apiUrl
           {value === 2 &&  renderSetiteng()  }
         </Grid>
 
-        <Grid item xs={12} sm={6}  md={6} xl={9}>
+        <Grid item xs={12} sm={12}  md={6} xl={9}>
           <div style={{display:'flex',flexDirection:'column'}}>
             <div style={{flexGrow:'1'}}>
             {this.state.selectedVideo && 
@@ -325,7 +325,7 @@ const API_URL = confing.apiUrl
                   <QrCode  playListId={this.state.playListId} />
                 </Grid>
                 <Grid item >
-                  <DoneSongs songsDone={this.state.songsDone}  />
+                  <DoneSongs getMyDoneList={this.getMyDoneList} songsDone={this.state.songsDone}  />
                 </Grid>
               </Grid>
             </Hidden>
