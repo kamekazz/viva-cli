@@ -28,7 +28,7 @@ export default function Myplaylist(props) {
         <Card className="card-serch-song">
           <img  className="card-serch-song-item1" src={song.imageUrl} alt={song.imageUrl}  />
           <CardContent  className="card-serch-song-item2" >
-            <Typography component="h6" variant="h6">
+            <Typography  component="h6" variant="h6">
             {tamanoNormal(song.title,35)}
             </Typography>
           </CardContent>

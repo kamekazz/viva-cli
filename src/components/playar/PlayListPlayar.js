@@ -290,7 +290,6 @@ const API_URL = confing.apiUrl
     const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 1000)
     return (
       <div style={styles.root}>
-   
       <Grid container >
         <Grid item xs={12} sm={12} md={6} xl={3}>
         <Hidden smDown >
@@ -307,7 +306,6 @@ const API_URL = confing.apiUrl
           {value === 1 &&  playComponetn()   }
           {value === 2 &&  renderSetiteng()  }
         </Grid>
-
         <Grid item xs={12} sm={12}  md={6} xl={9}>
           <div style={{display:'flex',flexDirection:'column'}}>
             <div style={{flexGrow:'1'}}>

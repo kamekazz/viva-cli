@@ -1,17 +1,30 @@
-import React from 'react'
+import React ,{Component}from 'react'
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Grow from '@material-ui/core/Grow';
+import Grid from '@material-ui/core/Grid';
+import MusicNote from '@material-ui/icons/MusicNote';
+import Slide from '@material-ui/core/Slide';
 
+export default class VideoListItem extends Component {
+ 
+  state={
+    item:true
+  }
 
-
-
- function VideoListItem(props) {
-  const { video } = props;
+render() {
+  const { video } = this.props
   const imageUrl = video.snippet.thumbnails.default.url
   const title = video.snippet.title
 
-  
+  const removeSer = async (video)=>{
+    await this.setState({item:false})
+
+    setTimeout(() => {
+      this.props.addvideoToMyList(video)
+    }, 500);
+    
+  }
 
   const tamanoNormal = (title,length) =>{
     let trimmedStringTitle = title.substring(0, length)
@@ -25,34 +38,30 @@ import Grow from '@material-ui/core/Grow';
   }
 
   
-
-
-
-
   return (
-    <Grow in={true}  >
-      <Card className="card-serch-song seleteson"  onClick={()=> props.addvideoToMyList(video)}  >
-        <img  className="card-serch-song-item1" src={imageUrl} alt={imageUrl} />
+    <Slide direction='right' in={this.state.item}  >
+      <Card className="card-serch-song seleteson"  onClick={(e)=> {
+        removeSer(video)
+      }
+        }  >
+        {/* <img  className="card-serch-song-item1" src={imageUrl} alt={imageUrl} /> */}
         <div  className="card-serch-song-item2 seleteson" >
-          <Typography component="h6" className="seleteson" variant="h6">
-            {tamanoNormal(title,40)}
+        <Grid container >
+        <Grid item xs zeroMinWidth>
+          <Typography component="h6" noWrap className="seleteson" align="center" variant="h6">
+           <MusicNote />{title}
           </Typography>
+        </Grid>
+        </Grid>
         </div>
       </Card>
-    </Grow>
-
-
+    </Slide>
   )
 }
 
 
 
-
-
-
-
-export default VideoListItem
-
+}
 
 
 
