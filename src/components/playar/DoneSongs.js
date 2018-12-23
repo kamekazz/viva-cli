@@ -17,6 +17,7 @@ import { connect } from 'react-redux'
 import * as actions from '../../actions'
 import axios from 'axios';
 import confing from '../../confing'
+import RepeatIcon from '@material-ui/icons/Repeat'
 const API_KEY = confing.API_KEY
 const API_URL = confing.apiUrl
 
@@ -75,6 +76,31 @@ class CheckboxList extends React.Component {
       console.log(e)
     }
   }
+
+  replay = async (id)=> {
+    let yourConfig = {
+      headers: {
+        authorization:  localStorage.getItem('token')
+      }
+    }
+    try {
+      const response = await axios.put(
+        `${API_URL}/api/playlist/resetall/${id}`,
+        yourConfig
+      )
+      if (response.data.success) {
+        this.newMassages('Replay',true)
+      } else{
+        this.newMassages(response.data.message,false)
+      }
+      this.props.getMyDoneList()
+      this.props.acDialog()
+    } catch (e) {
+      console.log(e)
+      this.newMassages('please check internet connection',false)
+      this.props.acDialog()
+    }
+  }
   
 
   render() {
@@ -83,6 +109,14 @@ class CheckboxList extends React.Component {
       return(
       <Button onClick={()=>this.deleteSong(id)} color="secondary">
                 delete
+      </Button>
+      )
+    }
+
+    const rdactivetiButtonReplay =(id)=>{
+      return(
+      <Button onClick={()=>this.replay(id)} color="secondary">
+                 Replay 
       </Button>
       )
     }
@@ -112,6 +146,9 @@ class CheckboxList extends React.Component {
                 <Typography variant="h6" id="historyText">
                     History
                 </Typography>
+                <Button  onClick={()=>this.props.acDialog('are you sure you want to reply all?','',rdactivetiButtonReplay(this.props.playlistId),true)} color="primary">
+                     <RepeatIcon />
+                </Button>
                 </Toolbar>
             </div> 
         )
@@ -124,9 +161,7 @@ class CheckboxList extends React.Component {
         {songsDone.map(song => (
           <ListItem key={song._id} role={undefined} dense button onClick={this.handleToggle(song._id)}>
             <MusicNote />
-
-            <ListItemText primary={hpTamanoNormal(song.title,25)} />
-
+            <ListItemText primary={hpTamanoNormal(song.title,18)} />
             <div className="historyline">
               <IconButton  onClick={()=>this.props.acDialog('currently not available?','','',true)} aria-label="Comments">
                 <Favorite />

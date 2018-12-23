@@ -267,8 +267,10 @@ const API_URL = confing.apiUrl
           <Opciones className="playcomnetn-button-item"  playListId={this.state.playListId}></Opciones> 
           </div> 
           <Myplaylist mylist={this.state.songInlist} voteUp={this.voteUp} voteDon={this.voteDon} />
+          <Hidden mdUp >
+            <DoneSongs playlistId={this.props.match.params.id} getMyDoneList={this.getMyDoneList} songsDone={this.state.songsDone}  />
+          </Hidden>
         </div>
-
       )
     }
 
@@ -277,7 +279,6 @@ const API_URL = confing.apiUrl
         <div>
           <Opciones playListId={this.state.playListId}></Opciones>
           <QrCode playListId={this.state.playListId} />
-          <DoneSongs getMyDoneList={this.getMyDoneList} songsDone={this.state.songsDone}  />
         </div>
       )
     }
@@ -292,7 +293,9 @@ const API_URL = confing.apiUrl
    
       <Grid container >
         <Grid item xs={12} sm={12} md={6} xl={3}>
+        <Hidden smDown >
         <div style={{marginBottom:20}}></div>
+        </Hidden>
           <AppBar position="static">
             <Tabs value={value}  onChange={this.handleChange} fullWidth >
               <Tab icon={<PhoneIcon />} />
@@ -316,7 +319,7 @@ const API_URL = confing.apiUrl
             }
             </div>
             <div style={{flexGrow:'1',padding:'20px'}}>
-            <Hidden xsDown >
+            <Hidden smDown >
               <Grid container  spacing={8} >
                 <Grid item >
                   <MetaData gifId={this.props.match.params.name} songInlist={this.state.songInlist}  ></MetaData> 
@@ -324,9 +327,11 @@ const API_URL = confing.apiUrl
                 <Grid item >
                   <QrCode  playListId={this.state.playListId} />
                 </Grid>
+                <Hidden smDown >
                 <Grid item >
-                  <DoneSongs getMyDoneList={this.getMyDoneList} songsDone={this.state.songsDone}  />
+                  <DoneSongs playlistId={this.props.match.params.id} getMyDoneList={this.getMyDoneList} songsDone={this.state.songsDone}  />
                 </Grid>
+                </Hidden>
               </Grid>
             </Hidden>
             </div>
